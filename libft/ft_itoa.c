@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:54:49 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/18 12:18:45 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/18 15:55:46 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,23 @@ static int	n_sign(int n)
 	return (n);
 }
 
-static char	*int_min(int n)
+static char	*int_min(int n, int len)
 {
+	char	*strn;
+
+	strn = (char *)malloc(sizeof(char) * len + 1);
+	if (strn == NULL)
+		return (0);
 	if (n == -2147483648)
-		return ("-2147483648");
+	{
+		strn = ft_strdup("-2147483648");
+		return (strn);
+	}
 	if (n == 0)
-		return ("0");
+	{
+		strn = ft_strdup("0");
+		return (strn);
+	}
 	return (0);
 }
 
@@ -55,7 +66,7 @@ char		*ft_itoa(int n)
 	strn[len] = '\0';
 	if (n == -2147483648 || n == 0)
 	{
-		strn = int_min(n);
+		strn = int_min(n, len);
 		return (strn);
 	}
 	if (n < 0)
