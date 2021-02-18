@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:54:49 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/11 18:54:51 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/18 12:18:45 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,14 @@ static int	n_len(int n)
 static int	n_sign(int n)
 {
 	if (n < 0)
-	{
 		n = n * -1;
-	}
 	return (n);
 }
+
 static char	*int_min(int n)
 {
 	if (n == -2147483648)
-		return("-2147483648");
+		return ("-2147483648");
 	if (n == 0)
 		return ("0");
 	return (0);
