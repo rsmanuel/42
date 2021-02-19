@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	n_len(int n)
 {
@@ -34,23 +35,12 @@ static int	n_sign(int n)
 	return (n);
 }
 
-static char	*int_min(int n, int len)
+static char	*int_min(int n)
 {
-	char	*strn;
-
-	strn = (char *)malloc(sizeof(char) * len + 1);
-	if (strn == NULL)
-		return (0);
 	if (n == -2147483648)
-	{
-		strn = ft_strdup("-2147483648");
-		return (strn);
-	}
+		return (ft_strdup("-2147483648"));
 	if (n == 0)
-	{
-		strn = ft_strdup("0");
-		return (strn);
-	}
+		return (ft_strdup("0"));
 	return (0);
 }
 
@@ -60,15 +50,15 @@ char		*ft_itoa(int n)
 	char	*strn;
 
 	len = n_len(n);
+	if (n == -2147483648 || n == 0)
+	{
+		strn = int_min(n);
+		return (strn);
+	}
 	strn = (char *)malloc(sizeof(char) * (len + 1));
 	if (strn == NULL)
 		return (0);
 	strn[len] = '\0';
-	if (n == -2147483648 || n == 0)
-	{
-		strn = int_min(n, len);
-		return (strn);
-	}
 	if (n < 0)
 	{
 		n = n_sign(n);
