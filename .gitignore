@@ -4,4 +4,5 @@
 a.out
 libftTester
 libft-unit-test
-Libfttest
+Libftest
+*.swp
