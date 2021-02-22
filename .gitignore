@@ -2,3 +2,6 @@
 *.o
 *.a
 a.out
+libftTester
+libft-unit-test
+Libfttest
