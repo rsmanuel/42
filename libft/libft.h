@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:51:39 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/18 20:08:52 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/19 14:19:33 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 typedef struct	s_list
 {
-	void		*content;
+	void			*content;
 	struct s_list	*next;
-}			t_list;
+}				t_list;
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
