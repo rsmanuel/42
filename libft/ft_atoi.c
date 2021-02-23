@@ -6,12 +6,11 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:50:28 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/08 18:35:29 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/23 12:02:04 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
