@@ -6,7 +6,7 @@
 #    By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/21 17:08:50 by rmanuel           #+#    #+#              #
-#    Updated: 2021/02/23 14:01:33 by rmanuel          ###   ########.fr        #
+#    Updated: 2021/02/23 19:06:50 by rmanuel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
 RM		= rm -f
 LIBC	= ar -rc
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Werror -Wextra
 INCS	= .
 
 .c.o :
