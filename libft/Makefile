@@ -6,7 +6,7 @@
 #    By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/21 17:08:50 by rmanuel           #+#    #+#              #
-#    Updated: 2021/02/22 11:46:00 by rmanuel          ###   ########.fr        #
+#    Updated: 2021/02/23 14:01:33 by rmanuel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ SRCS_B	=   		ft_lstadd_back.c \
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
 RM		= rm -f
-LIBC	= ar -rcs
+LIBC	= ar -rc
 FLAGS	= -Wall -Wextra -Werror
 INCS	= .
 

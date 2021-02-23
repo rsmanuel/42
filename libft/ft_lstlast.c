@@ -6,7 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 18:12:46 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/22 19:25:39 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/23 12:39:16 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (!lst)
+		return (0);
 	while (lst->next)
 	{
 		lst = lst->next;
