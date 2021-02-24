@@ -6,11 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:08:05 by rmanuel           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/02/24 10:33:40 by rmanuel          ###   ########.fr       */
-=======
-/*   Updated: 2021/02/23 20:45:22 by rmanuel          ###   ########.fr       */
->>>>>>> e8ec59fcb3e4b4004c4e258e4265b93f32b7e493
+/*   Updated: 2021/02/24 11:17:36 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list *new;
 
 	if (!f || !lst)
-<<<<<<< HEAD
 		return (NULL);
-=======
-		return (NULL); 
->>>>>>> e8ec59fcb3e4b4004c4e258e4265b93f32b7e493
 	list = NULL;
 	while (lst)
 	{
