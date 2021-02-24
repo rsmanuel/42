@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:51:24 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/08 18:33:45 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/24 11:47:18 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*a;
+	char	*newb;
 
-	a = (char *)b;
+	newb = (char *)b;
 	while (len > 0)
 	{
-		a[len - 1] = c;
+		newb[len - 1] = c;
 		len--;
 	}
 	return (b);
