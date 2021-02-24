@@ -6,7 +6,11 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 16:37:17 by rmanuel           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/02/24 11:02:13 by rmanuel          ###   ########.fr       */
+=======
+/*   Updated: 2021/02/23 21:07:43 by rmanuel          ###   ########.fr       */
+>>>>>>> e8ec59fcb3e4b4004c4e258e4265b93f32b7e493
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +21,11 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char	*s;
 	char	*d;
 	size_t	i;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> e8ec59fcb3e4b4004c4e258e4265b93f32b7e493
 	if (!dst && !src)
 		return (0);
 	s = (char *)src;
@@ -33,5 +41,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			i++;
 		}
 	}
+<<<<<<< HEAD
 	return (d);
+=======
+	return (dst);
+>>>>>>> e8ec59fcb3e4b4004c4e258e4265b93f32b7e493
 }
