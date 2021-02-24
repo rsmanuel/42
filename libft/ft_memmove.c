@@ -6,8 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 16:37:17 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/24 11:11:00 by rmanuel          ###   ########.fr       */
-/*   Updated: 2021/02/23 21:07:43 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/24 11:55:47 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +17,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char	*s;
 	char	*d;
 	size_t	i;
-	
+
 	if (!dst && !src)
 		return (0);
 	s = (char *)src;
