@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 16:51:28 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/08 18:34:03 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/24 13:17:03 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
+	if (!src || !dst)
+		return (-1);
 	if (dstsize == 0)
 	{
 		while (src[i] != '\0')
