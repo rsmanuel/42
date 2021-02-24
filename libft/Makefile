@@ -6,7 +6,7 @@
 #    By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/21 17:08:50 by rmanuel           #+#    #+#              #
-#    Updated: 2021/02/23 19:06:50 by rmanuel          ###   ########.fr        #
+#    Updated: 2021/02/24 16:55:05 by rmanuel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS_B	=   		ft_lstadd_back.c \
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
 RM		= rm -f
+CC		= gcc
 LIBC	= ar -rc
 FLAGS	= -Wall -Werror -Wextra
 INCS	= .
@@ -70,13 +71,13 @@ $(NAME): ${OBJS}
 all: $(NAME)
 
 bonus: $(NAME) $(OBJS_B)
-	${LIBC} $(NAME) $(OBJS_B)
+	$(LIBC) $(NAME) $(OBJS_B)
     
 fclean: clean
-	$(RM) $(NAME) $(bonus)
+	$(RM) $(NAME)
 
 clean:
-	$(RM) -f $(OBJS) $(OBJS_B)
+	$(RM) $(OBJS) $(OBJS_B)
     
 re: fclean all
 

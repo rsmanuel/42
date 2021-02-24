@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 18:34:28 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/24 11:56:40 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/24 17:11:47 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	size_t	i;
 
+	if (!s1)
+		return (0);
 	end = ft_strlen(s1);
 	start = 0;
 	i = 0;

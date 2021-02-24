@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 15:28:53 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/09 15:42:00 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/24 17:09:56 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ char		**ft_split(char const *s, char c)
 	char	**split;
 	int		nbstrs;
 
-	nbstrs = count_strs(s, c);
-	if (s == NULL)
+	if (!s)
 		return (0);
+	nbstrs = count_strs(s, c);
 	split = (char **)malloc(sizeof(char *) * (nbstrs + 1));
 	if (split == NULL)
 		return (0);
