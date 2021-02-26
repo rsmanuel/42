@@ -6,11 +6,13 @@
 /*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 23:12:32 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/25 17:23:45 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/02/26 12:39:24 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 char	*make_buf_save(char *buf_save, char *buf)
 {
@@ -66,7 +68,7 @@ int	get_next_line(int fd, char **line)
 		buf_save = make_buf_save(buf_save, buf);
 	}
 	free(buf);
-	
+	*line = buf_save;
 	if (buf_size == 0)
 		return (0);
 	return (1);
