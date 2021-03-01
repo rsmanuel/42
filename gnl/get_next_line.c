@@ -5,71 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/24 23:12:32 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/26 12:39:24 by rmanuel          ###   ########.fr       */
+/*   Created: 2021/03/01 12:43:52 by rmanuel           #+#    #+#             */
+/*   Updated: 2021/03/01 14:58:09 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-char	*make_buf_save(char *buf_save, char *buf)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
-	char *saved;
-	int i;
-	int j;
+	char	*s3;
+	int		i;
+	int		k;
 
-	if(!buf_save || !buf)
-		return(0);
-	i = 0;
-	j = 0;
-	if (!(saved = malloc(sizeof(char) * (ft_strlen(buf_save) + ft_strlen(buf) + 1))))
+	if (!s1 || !s2)
 		return (0);
-	while (buf_save[i] != '\0')
+	i = 0;
+	k = 0;
+	if (!(s3 = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (0);
+	while (s1[i] != '\0')
 	{
-		saved[j] = buf_save[i];
+		s3[k] = s1[i];
 		i++;
-		j++; 
+		k++;
 	}
 	i = 0;
-	while (buf[i] != '\0')
+	while (s2[i] != '\0')
 	{
-		saved[j] = buf[i];
+		s3[k] = s2[i];
 		i++;
-		j++;
+		k++;
 	}
-	saved[j] = '\0';
-	return (saved);
+	s3[k] = '\0';
+	return (s3);
 }
 
+int	findnl(char *new_line)
+{
+	int i;
 
+	i = 0;
+	while (new_line[i] != '\0')
+	{
+		if (new_line[i] == '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+}	
 
 int	get_next_line(int fd, char **line)
 {
-	static char	*buf_save;
-	char	*buf;
-	int	buf_size;
+	static char	*new_line;
+	char		buffer[BUFFER_SIZE];
+	int		ret;
 
-	if(fd < 0 || !line || BUFFER_SIZE <= 0)
-		return(-1);
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (buf == NULL)
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	buf_size = read(fd, buf, BUFFER_SIZE);
-	while (buf_size != 0 && check_nl(buf_save) == 1)
+	new_line = NULL;
+	while (findnl(new_line) == 1 && (ret = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		if (buf_size == -1)
-		{
-			free(buf);
-			return (-1);			
-		}
-		buf[buf_size] = '\0';
-		buf_save = make_buf_save(buf_save, buf);
+		buffer[ret + 1] = '\0';
+		new_line = ft_strjoin(new_line, buffer);
+		free(new_line);
 	}
-	free(buf);
-	*line = buf_save;
-	if (buf_size == 0)
-		return (0);
-	return (1);
+	if (r > 0)
+		*line = new_line;
 }
