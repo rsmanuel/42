@@ -5,9 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char        *ft_strjoin(char const *s1, char const *s2);
-int         findnl(char *new_line);
-int	        get_next_line(int fd, char **line);
-int			ft_strlen(char const *str);
+int			get_next_line(int fd, char **line);
+char        *ft_strdup(const char *s1);
 
 #endif
