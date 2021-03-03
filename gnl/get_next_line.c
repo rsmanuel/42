@@ -3,128 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
+/*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 12:43:52 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/01 18:08:33 by rmanuel          ###   ########.fr       */
+/*   Created: 2021/03/03 11:44:39 by rmanuel           #+#    #+#             */
+/*   Updated: 2021/03/03 19:19:01 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char			*sub;
+	size_t			slen;
+	unsigned int	i;
 
+	slen = ft_strlen(s);
+	if (len > slen)
+		sub = (char *)malloc(sizeof(char) * (slen + 1));
+	else
+		sub = (char *)malloc(sizeof(char) * (len + 1));
+	if (sub == NULL)
+		return (0);
 	i = 0;
-	if (!src || !dst)
-		return (-1);
-	if (dstsize == 0)
+	if (!s)
+		return (0);
+	if (start < slen)
 	{
-		while (src[i] != '\0')
+		while (i < len && s[start] != '\0')
 		{
+			sub[i] = s[start];
 			i++;
+			start++;
 		}
-		return (i);
 	}
-	while (i < dstsize - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	if (i < dstsize)
-		dst[i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	sub[i] = '\0';
+	return (sub);
 }
 
-size_t	ft_strlen(const char *s)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	char	*str;
+	size_t	len;
+	char	newc;
 
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	str = (char *)s;
+	len = ft_strlen(str);
+	newc = (char)c;
+	while (len != 0 && str[len] != newc)
+		len--;
+	if (str[len] == newc)
+		return (&str[len]);
+	return (NULL);
 }
 
-
-int	ft_strlen_nl(char **save_line)
+int	return_values(char *save, char **line, int ret)
 {
 	int len;
-
+	
 	len = 0;
-	while (*save_line[len] != '\0')
-	{
-		if (*save_line[len] == '\n')
-			return (len);
-		len++;
-	}
-	return (len);
-}
-
-int	return_values(char **save_line, char **line, int ret)
-{
-	int len;
-	char *tmp;
-
-	len = 0;
-	if(ret < 0)
+	if (ret < 0)
 		return (-1);
 	else if (ret == 0)
 	{
-		if (save_line == NULL)
-			*line = ft_strdup("");
-		else if (save_line != NULL)
-		{
-			*line = ft_strdup(*save_line);
-			free(*save_line);
-			*save_line = NULL;
-		}
-		return(0);
+		*line = ft_strdup(save);
+		return (0);
 	}
 	else
-		len = ft_strlen_nl(save_line);
-		if (*save_line[len] == '\n')
-		{
-			*line = ft_substr(*save_line, 0, len);
-			tmp = ft_strdup(&(*save_line[len + 1]));
-			free(save_line);
-			*save_line = tmp;
-		}
-		else
-		{
-			*line = ft_strdup(*save_line);
-			free(*save_line);
-			*save_line = NULL;
-			return (0);
-		}
-	return (1); 
+	{
+		while (save[len] != '\n' || save[len] != '\0')
+			len++;
+		*line = ft_substr(save, 0, len);			
+	}
+	return (1);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	int ret;
+	int	ret;
 	char buffer[BUFFER_SIZE + 1];
-	static char *save_line;
+	static char *save;
 	char *tmp;
 
-	if (fd < 0)
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	while((ret = read(fd, buffer, BUFFER_SIZE)) > 0)
+	while ((ret = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[ret] = '\0';
-		if (save_line == NULL)
-			save_line = ft_strdup(buffer);
+		if (save == NULL)
+			save = ft_strdup(buffer);
 		else
-			tmp = ft_strjoin(save_line, buffer);
-			free(save_line);
-			save_line = tmp;
-		if (ft_strchr(save_line, '\n'))
-			break;
+			tmp = ft_strjoin(save, buffer);
+			save = tmp;
+		if (ft_strchr(save, '\n'))
+			break ;
 	}
-	return(return_values(&save_line, line, ret));
+	return (return_values(save, line, ret));	
 }
