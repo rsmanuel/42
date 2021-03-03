@@ -6,7 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 11:44:39 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/03 19:19:01 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/03 20:18:32 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	*ft_strrchr(const char *s, int c)
 int	return_values(char *save, char **line, int ret)
 {
 	int len;
+	char *tmp;
 	
 	len = 0;
 	if (ret < 0)
@@ -73,7 +74,10 @@ int	return_values(char *save, char **line, int ret)
 	{
 		while (save[len] != '\n' || save[len] != '\0')
 			len++;
-		*line = ft_substr(save, 0, len);			
+		*line = ft_substr(save, 0, len);
+		tmp = ft_strdup(&save[len + 1]);
+		free(save);
+		save = tmp;
 	}
 	return (1);
 }
