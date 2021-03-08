@@ -41,5 +41,6 @@ int main(int argc, char **argv)
 			printf("\n EOF has been reached\n");
 		close(fd);
 	}
+	sleep(7);
     return (0);
 }
