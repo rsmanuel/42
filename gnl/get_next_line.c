@@ -6,11 +6,28 @@
 /*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 16:56:47 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/09 09:50:38 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/09 11:48:47 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
 
 int	find_nl(char *str)
 {
@@ -41,13 +58,14 @@ char	*make_line(char *save, char **line)
 		save = NULL;
 		return (save);
 	}
-	save[i_nl] = '\0';
-	*line = malloc(sizeof(char) * i_nl);
-	tmp_save = ft_strdup(&save[i_nl + 1]);
-	ft_strlcpy(*line, save, i_nl);
-	free(save);
-	save = NULL;
-	return (tmp_save);
+	else
+		save[i_nl] = '\0';
+		*line = ft_calloc(i_nl + 1, sizeof(char));
+		tmp_save = ft_strdup(&save[i_nl + 1]);
+		ft_strlcpy(*line, save, i_nl + 1);
+		free(save);
+		save = NULL;
+		return (tmp_save);
 }
 
 int	get_next_line(int fd, char **line)
@@ -58,13 +76,13 @@ int	get_next_line(int fd, char **line)
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (save == NULL)
-		save = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (save ==  NULL)
+		save = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	ret = 1;
 	while (ret > 0 && find_nl(save) == -1)
 	{
-		ret = read(fd, buffer, BUFFER_SIZE);
+		ret = read(fd, buffer, BUFFER_SIZE + 1);
 		save = ft_strjoin(save, buffer);
 	}
 	if (ret > 0)

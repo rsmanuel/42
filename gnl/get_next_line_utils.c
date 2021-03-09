@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 14:06:56 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/08 15:19:28 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/09 11:34:08 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,26 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	return (s3);
 }
 
-size_t	ft_strlen(const char *s)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
+	char *ptr;
 
-	i = 0;
-	while (s[i] != '\0')
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (0);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	char	*newb;
+
+	newb = (char *)b;
+	while (len > 0)
 	{
-		i++;
+		newb[len - 1] = c;
+		len--;
 	}
-	return (i);
+	return (b);
 }
