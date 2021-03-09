@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 16:56:47 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/08 18:36:18 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/09 09:50:38 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	find_nl(char *str)
 char	*make_line(char *save, char **line)
 {
 	int i_nl;
-	char *saved;
+	char *tmp_save;
 
 	i_nl = find_nl(save);
 	if (i_nl == -1)
@@ -42,12 +42,12 @@ char	*make_line(char *save, char **line)
 		return (save);
 	}
 	save[i_nl] = '\0';
-	*line = malloc(sizeof(char) * i_nl + 1);
-	saved = ft_strdup(&save[i_nl + 1]);
-	ft_strlcpy(*line, save, i_nl + 1);
+	*line = malloc(sizeof(char) * i_nl);
+	tmp_save = ft_strdup(&save[i_nl + 1]);
+	ft_strlcpy(*line, save, i_nl);
 	free(save);
 	save = NULL;
-	return (saved);
+	return (tmp_save);
 }
 
 int	get_next_line(int fd, char **line)
