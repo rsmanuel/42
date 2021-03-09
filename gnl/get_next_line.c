@@ -6,11 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 16:56:47 by rmanuel           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/03/09 13:13:22 by rmanuel          ###   ########.fr       */
-=======
-/*   Updated: 2021/03/09 12:12:36 by rmanuel          ###   ########.fr       */
->>>>>>> 122170dc677bd6657408695d2f64612ca0b56f3e
+/*   Updated: 2021/03/09 18:59:42 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +22,8 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i] != '\0')
 	{
 		i++;
@@ -67,7 +65,6 @@ char	*make_line(char *save, char **line)
 	tmp_save = ft_strdup(&save[i_nl + 1]);
 	ft_strlcpy(*line, save, i_nl + 1);
 	free(save);
-	save = NULL;
 	return (tmp_save);
 }
 
@@ -80,18 +77,18 @@ int	get_next_line(int fd, char **line)
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (save ==  NULL)
-		save = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	ret = 1;
-	while (ret > 0 && find_nl(save) == -1)
+	while (find_nl(save) == -1 && (ret = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		ret = read(fd, buffer, BUFFER_SIZE + 1);
-		save = ft_strjoin(save, buffer);
+		if (save)
+			save = ft_strjoin(save, buffer);
+		else
+			save = ft_strdup(buffer);
 	}
-	if (ret > 0)
-		save = make_line(save, line);
+	if(ret < 0)
+		return (-1);
+	save = make_line(save, line);
 	free(buffer);
-	if (ret >= 1)
+	if (save)	
 		return (1);
 	return (0);
 }

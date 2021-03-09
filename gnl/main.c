@@ -1,46 +1,28 @@
-#include "get_next_line.h"
+#include <stdio.h>
+#include <unistd.h>
 #include <fcntl.h>
-int main(int argc, char **argv)
+#include "get_next_line.h"
+int	main(int argc, char **args)
 {
-	int fd, ret, line_count;
+	int fd;
+	int ret;
 	char *line;
-
-	line_count = 1;
-	ret = 0;
-	line = NULL;
-	if (argc == 2)
+	fd = open(args[1], O_RDONLY);
+	if (fd < 0)
 	{
-		fd = open(argv[1], O_RDONLY);
-		while ((ret = get_next_line(fd, &line)) > 0)
-		{
-			printf(" \n [ Return: %d ] | A line has been read #%d => %s\n", ret, line_count, line);
-			line_count++;
-			free(line);
-		}
-		printf(" \n [ Return: %d ] A line has been read #%d: %s\n", ret, line_count++, line);
-		printf("\n");
-		if (ret == -1)
-			printf("-----------\n An error happened\n");
-		else if (ret == 0)
-		{
-			printf("-----------\n EOF has been reached\n");
-			free(line);
-		}
-		close(fd);
+		printf("error when opening file\n");
+		return 1;
 	}
-	if (argc == 1)
+	while ((ret = get_next_line(fd, &line)) >= 0)
 	{
-		while ((ret = get_next_line(0, &line)) > 0)
-		{
-			printf("[Return: %d] Line #%d: %s\n", ret, line_count, line);
-			line_count++;
-		}
-		if (ret == -1)
-			printf("\n An error happened\n");
-		else if (ret == 0)
-			printf("\n EOF has been reached\n");
-		close(fd);
+		printf("%s\n", line);
+		printf("gnl ret: %d\n", ret);
+		if (ret == 0)
+			break ;
+		free(line);
 	}
+	free(line);
+	close(fd);
 	sleep(7);
-    return (0);
+	return 0;
 }
