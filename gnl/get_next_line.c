@@ -6,7 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 09:46:11 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/10 12:47:33 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/10 15:30:39 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			get_next_line(int fd, char **line)
 	{
 		buffer[ret] = '\0';
 		if (save)
-			save = ft_strjoin(save, buffer);
+			save = ft_strjoin_free(save, buffer);
 		else
 			save = ft_strdup(buffer);
 	}
