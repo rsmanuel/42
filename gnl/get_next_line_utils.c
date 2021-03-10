@@ -6,37 +6,31 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 09:47:00 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/10 15:12:49 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/10 19:14:20 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int			ft_strlcpy(char *dst, const char *src, int dstsize)
 {
-	size_t	i;
+	int src_i;
+	int src_len;
 
-	i = 0;
-	if (!src || !dst)
+	if (!dst)
 		return (-1);
-	if (dstsize == 0)
+	src_i = 0;
+	src_len = ft_strlen(src);
+	if (!dstsize)
+		return (src_len);
+	while (src_i < src_len && src_i + 1 < dstsize)
 	{
-		while (src[i] != '\0')
-		{
-			i++;
-		}
-		return (i);
+		dst[src_i] = src[src_i];
+		src_i++;
 	}
-	while (i < dstsize - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	if (i < dstsize)
-		dst[i] = '\0';
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	if (dstsize > 0)
+		dst[src_i] = '\0';
+	return (src_len);
 }
 
 char		*ft_strdup(const char *s1)

@@ -6,7 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 09:46:11 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/10 15:30:39 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/10 19:20:19 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ char		*make_line(char *save, char **line)
 	{
 		*line = ft_strdup(save);
 		free(save);
-		save = NULL;
-		return (save);
+		return (NULL);
 	}
-	save[i_nl] = '\0';
-	*line = ft_calloc(i_nl + 1, sizeof(char));
+	*line = (char *)ft_calloc(i_nl + 1, sizeof(char));
 	tmp_save = ft_strdup(&save[i_nl + 1]);
 	ft_strlcpy(*line, save, i_nl + 1);
 	free(save);
@@ -78,6 +76,8 @@ int			get_next_line(int fd, char **line)
 	if (read(fd, 0, 0) == -1 || fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+		return (-1);
 	while (find_nl(save) == -1 && (ret = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		buffer[ret] = '\0';
@@ -90,6 +90,7 @@ int			get_next_line(int fd, char **line)
 		return (-1);
 	save = make_line(save, line);
 	free(buffer);
+	buffer = NULL;
 	if (save)
 		return (1);
 	return (0);

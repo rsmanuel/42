@@ -6,7 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 11:46:23 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/10 15:14:36 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/03/10 19:14:46 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 # include <string.h>
 
 int		get_next_line(int fd, char **line);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		ft_strlcpy(char *dst, const char *src, int dstsize);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin_free(char *s1, char const *s2);
 char	*ft_strdup(const char *s1);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
+char	*make_line(char *save, char **line);
+int		find_nl(char *str);
 
 #endif
