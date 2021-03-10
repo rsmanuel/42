@@ -21,8 +21,9 @@ int	main(int argc, char **args)
 			break ;
 		free(line);
 	}
+	get_next_line(fd, &line);
+	printf("<%s>", line);
 	free(line);
 	close(fd);
-	sleep(7);
 	return 0;
 }

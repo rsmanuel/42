@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmanuel <rmanuel@student.42lisboa.com      +#+  +:+       +#+        */
+/*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/06 14:06:56 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/03/09 18:02:19 by rmanuel          ###   ########.fr       */
+/*   Created: 2021/03/10 09:47:00 by rmanuel           #+#    #+#             */
+/*   Updated: 2021/03/10 12:10:26 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 
@@ -39,7 +39,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (i);
 }
 
-char	*ft_strdup(const char *s1)
+char		*ft_strdup(const char *s1)
 {
 	char	*s2;
 	size_t	len;
@@ -52,7 +52,7 @@ char	*ft_strdup(const char *s1)
 	return (s2);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char *s1, char const *s2)
 {
 	char	*s3;
 	int		i;
@@ -78,10 +78,11 @@ char		*ft_strjoin(char const *s1, char const *s2)
 		k++;
 	}
 	s3[k] = '\0';
+	free(s1);
 	return (s3);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+void		*ft_calloc(size_t count, size_t size)
 {
 	char *ptr;
 
@@ -92,7 +93,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-void	*ft_memset(void *b, int c, size_t len)
+void		*ft_memset(void *b, int c, size_t len)
 {
 	char	*newb;
 
