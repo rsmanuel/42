@@ -1,25 +1,52 @@
-//cspdiuxX
 #include <stdio.h>
 #include "libft/libft.h"
 #include <stdarg.h>
 
-void	format(const char *str, va_list ap)
+void	print_c(va_list ap)
 {
+	ft_putchar_fd(va_arg(ap, int), 1); 
+}
+
+void	print_s(va_list ap)
+{
+	ft_putstr_fd(va_arg(ap, char *), 1);
+}
+
+void	print_d(va_list ap)
+{
+	ft_putnbr_fd(va_arg(ap, int), 1);
+}
+
+int	format(const char *str, va_list ap)
+{
+	int len;
 	char *modifier;
 	//find modifier (s, d, c, ...)
-	while (*str)
+	len = 0;
+	while (ft_strchr("-. 0*#+cspdiuxX123456789", *str))
 	{
+		len++;
 		modifier = ft_strchr("cspdiuxX", *str);
 		if (modifier)
 			break;
 		str++;
 	}
-	printf("modifier: %c\n", *modifier);
+	if (!modifier)
+		return (0);
+	printf ("\nmodifier is: |%s|\n", modifier);
 	//call corresponding function (e.g. format_string, format_int)
+	if (*modifier == 'c')
+		print_c(ap);
+	else if (*modifier == 's')
+		print_s(ap);
+	else if (*modifier == 'd')
+		print_d(ap);
+	return (len);
 }
 
 int		ft_printf(const char *fmt, ...)
 {
+	int modifier_len;
 	int i;
 	va_list ap;
 	
@@ -30,8 +57,11 @@ int		ft_printf(const char *fmt, ...)
 	{
 		if (fmt[i] == '%')
 		{
-			format(&fmt[i], ap);
+			modifier_len = format(&fmt[i + 1], ap);
+			i += modifier_len; 
 		}
+		else
+			ft_putchar_fd(fmt[i], 1);
 		i++;
 	}
 	return (0);
@@ -39,5 +69,5 @@ int		ft_printf(const char *fmt, ...)
 
 int	main(void)
 {
-	ft_printf("%d %s asdasda % -.s");
+	ft_printf("|%c| asdasd |%c| sh|%s|shs|%.0zzdsdadasd|", 'a', 'b', "rodrigo", '1');
 }
