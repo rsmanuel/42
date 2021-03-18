@@ -21,8 +21,9 @@ int	format(const char *str, va_list ap)
 {
 	int len;
 	char *modifier;
-	//find modifier (s, d, c, ...)
+
 	len = 0;
+	modifier = NULL;
 	while (ft_strchr("-. 0*#+cspdiuxX123456789", *str))
 	{
 		len++;
@@ -33,8 +34,6 @@ int	format(const char *str, va_list ap)
 	}
 	if (!modifier)
 		return (0);
-	printf ("\nmodifier is: |%s|\n", modifier);
-	//call corresponding function (e.g. format_string, format_int)
 	if (*modifier == 'c')
 		print_c(ap);
 	else if (*modifier == 's')
@@ -69,5 +68,6 @@ int		ft_printf(const char *fmt, ...)
 
 int	main(void)
 {
-	ft_printf("|%c| asdasd |%c| sh|%s|shs|%.0zzdsdadasd|", 'a', 'b', "rodrigo", '1');
+	//printf("|%c| |%s| |%€d|", 'a', "rodrigo", 1);
+	ft_printf("|%c| |%s| |%€d|", 'a', "rodrigo", 1);
 }
