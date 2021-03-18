@@ -51,7 +51,6 @@ int		ft_printf(const char *fmt, ...)
 	
 	i = 0;
 	va_start(ap, fmt);
-	//create struct with flags
 	while (fmt[i])
 	{
 		if (fmt[i] == '%')
@@ -66,8 +65,10 @@ int		ft_printf(const char *fmt, ...)
 	return (0);
 }
 
-int	main(void)
+int main(void)
 {
-	//printf("|%c| |%s| |%€d|", 'a', "rodrigo", 1);
-	ft_printf("|%c| |%s| |%€d|", 'a', "rodrigo", 1);
+	char *str;
+
+	str = "%0c\n%-s\n%d\n%€d";
+	ft_printf(str, 'a', "this is a string", 1, 2);
 }
