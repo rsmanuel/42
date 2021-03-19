@@ -62,13 +62,11 @@ int		ft_printf(const char *fmt, ...)
 			ft_putchar_fd(fmt[i], 1);
 		i++;
 	}
+	va_end(ap);
 	return (0);
 }
 
 int main(void)
 {
-	char *str;
-
-	str = "%0c\n%-s\n%d\n%€d";
-	ft_printf(str, 'a', "this is a string", 1, 2);
+	ft_printf("%d ola %s", 1, "this is a string");
 }
