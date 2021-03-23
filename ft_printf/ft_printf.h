@@ -21,3 +21,5 @@ typedef struct	s_struct
 
 int		ft_printf(const char *fmt, ...);
 void	reset_struct(t_struct *params);
+
+#endif
