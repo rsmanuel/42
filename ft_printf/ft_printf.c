@@ -4,6 +4,7 @@
 
 void debug_params(t_struct *params)
 {
+	printf("\n\n");
 	printf("\tminus: \t\t%d\n", params->minus);
 	printf("\tplus: \t\t%d\n", params->plus);
 	printf("\tzero: \t\t%d\n", params->zero);
@@ -14,33 +15,35 @@ void debug_params(t_struct *params)
 	printf("\n\n");
 }
 
-int nb_len(int nb)
+int save_intarg(va_list ap) 
 {
+	int nb;
+	char *save;
 	int len;
 
-	len = 0;
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		len++;
-	}
+	nb = va_arg(ap, int);
+	save = ft_itoa(nb);
+	len = ft_strlen(save);
 	return (len);
 }
 
 void print_width(t_struct *params, va_list ap)
 {
+	int len;
 	int width;
-	int nb;
+	va_list ap2;
 	
-	nb = nb_len(print_d(params));
-	width = (params->width) - nb;
+	va_copy(ap2, ap);
+	len = save_intarg(ap2);
+	width = (params->width) - len;
 	if (params->zero)
 	{
-		while (--width >= 0)
+		while (width-- > 0)
 			ft_putchar_fd('0', 1);
 	}
-	while (--width >= 0)
+	while (width-- > 0)
 		ft_putchar_fd(' ', 1);
+	va_end(ap2);
 }
 
 void	print_c(va_list ap)
@@ -53,13 +56,11 @@ void	print_s(va_list ap)
 	ft_putstr_fd(va_arg(ap, char *), 1);
 }
 
-int	print_d(va_list ap, t_struct *params)
+void	print_d(va_list ap, t_struct *params)
 {
-	int nb;
 	if (params->width)
 		print_width(params ,ap);
-	nb = ft_putnbr_fd(va_arg(ap, int), 1);
-	return (nb);
+	ft_putnbr_fd(va_arg(ap, int), 1);
 }
 
 void parse_flags(const char *str, va_list ap, t_struct *params)
@@ -108,9 +109,9 @@ void parse_width(const char *str, va_list ap, t_struct *params)
 
 void parse_modifiers(const char *str, va_list ap, t_struct *params)
 {
+	//debug_params(params);
 	parse_flags(str, ap, params);
 	parse_width(str, ap, params);
-	debug_params(params);
 }
 
 void print(char conversion, va_list ap, t_struct *params)
@@ -131,7 +132,7 @@ int	parse_str(const char *str, va_list ap, t_struct *params)
 	len = 0;
 	conversion = NULL;
 	parse_modifiers(str, ap, params);
-	while (ft_strchr("-. 0*#+cspdiuxX123456789", *str))
+	while (ft_strchr("-. 0*#+cspdiuxXnfge123456789", *str))
 	{
 		len++;
 		conversion = ft_strchr("cspdiuxX", *str);
@@ -172,6 +173,6 @@ int		ft_printf(const char *fmt, ...)
 
 int main(void)
 {
-	ft_printf("%02d", 5);
-	printf("\n%02d", 5);
+	ft_printf("%d %d", 5, 22);
+	printf("\n%d %d", 5, 22);
 }
