@@ -109,7 +109,7 @@ void parse_width(const char *str, va_list ap, t_struct *params)
 
 void parse_modifiers(const char *str, va_list ap, t_struct *params)
 {
-	//debug_params(params);
+	debug_params(params);
 	parse_flags(str, ap, params);
 	parse_width(str, ap, params);
 }
@@ -173,6 +173,6 @@ int		ft_printf(const char *fmt, ...)
 
 int main(void)
 {
-	ft_printf("%d %d", 5, 22);
+	ft_printf("%s %d", "rodrigo", 2);
 	printf("\n%d %d", 5, 22);
 }
