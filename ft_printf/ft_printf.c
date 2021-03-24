@@ -52,6 +52,6 @@ int		ft_printf(const char *fmt, ...)
 
 int main(void)
 {
-	ft_printf		("<%+-10d>\n", 8);
-	printf		("<%+-10d>", 8);
+	ft_printf		("<%-100d>\n",1560133635);
+	printf		("<%-100d>",1560133635);
 }

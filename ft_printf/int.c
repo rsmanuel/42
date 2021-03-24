@@ -17,6 +17,8 @@ void	print_d(va_list ap, t_struct *params)
 	}
 	params->str = str;
 	print_plus(params, nb, len);
+	if (params->plus && nb > 0)
+		len++;
 	if (params->width && !params->minus)
 		print_width_and_zero_d(params, len);
 	ft_putstr_fd(str, 1);
