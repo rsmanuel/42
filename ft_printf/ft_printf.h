@@ -26,7 +26,7 @@ int		ft_printf(const char *fmt, ...);
 void	reset_struct(t_struct *params);
 void	debug_params(t_struct *params);
 //void	ft_d_aux(t_struct *params, int len, int nb);
-void	ft_c_aux(t_struct *params);
+void	print_c_aux(t_struct *params, int len, char c);
 void	print(va_list ap, t_struct *params);
 void	print_c(va_list ap, t_struct *params);
 void	print_s(va_list ap);
@@ -42,5 +42,8 @@ void	ft_minus(t_struct *params, int len, int nb);
 void	ft_zero(t_struct *params, int len, int nb);
 void	ft_plus(t_struct *params, int nb);
 void	ft_space(t_struct *params, int nb);
+void	ft_width_c(t_struct *params, int len);
+void	ft_zero_c(t_struct *params, int len);
+void	ft_minus_c(t_struct *params, int len);
 
 #endif

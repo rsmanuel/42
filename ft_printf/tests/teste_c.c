@@ -23,8 +23,8 @@ int main(void)
 	printf("\t\tZERO-FILL %%c\n");
 	printf("------------------------------------------------------------\n");
 
-    ft_printf("ft_printf:\t[%05c]\n", 'a');
-    printf("printf:\t\t[%05c]\n", 'a');
+    ft_printf("ft_printf:\t[%5c]\n", 'a');
+    printf("printf:\t\t[%5c]\n", 'a');
     printf("------------------------------------------------------------\n");
 
 
