@@ -16,36 +16,40 @@ void	print_d(va_list ap, t_struct *params)
 		ft_putchar_fd('-', 1);
 	}
 	params->str = str;
-	if (params->plus && nb >= 0)
+	if ((params->plus || params->space) && nb >= 0)
 		len++;
 	print_d_aux(params, len, nb, str);
 }
 
 void	print_d_aux(t_struct *params, int len, int nb, char *str)
 {
-	if(params->minus && params->width && params->plus)
+	if (params->space && params->width && nb >= 0)
+		ft_putchar_fd(' ', 1);
+	if (params->minus && params->width && params->plus && nb >= 0)
 		ft_putchar_fd('+', 1);
 	if (params->width && !params->minus)
-		print_width_and_zero_d(params, len, nb);
+		ft_d_aux(params, len, nb);
 	ft_putstr_fd(str, 1);
 	if (params->width && params->minus)
-		print_width_and_zero_d(params, len, nb);
+		ft_d_aux(params, len, nb);
 }
 
-void print_width_and_zero_d(t_struct *params, int len, int nb)
+void ft_d_aux(t_struct *params, int len, int nb)
 {
 	int width;
 	
 	width = (params->width) - len;
 	if (params->zero && (!params->minus || params->str[0] == '-'))
 	{
-		if (params->plus && params->zero && nb >= 0)
+		if (params->space && params->width && !params->zero && nb >= 0)
+			ft_putchar_fd(' ', 1);
+		if (params->plus && !params->minus && params->zero && nb >= 0)
 			ft_putchar_fd('+', 1);
 		while (width-- > 0)
 			ft_putchar_fd('0', 1);
 	}
 	while (width-- > 0)
 		ft_putchar_fd(' ', 1);
-	if (params->plus && params->width && !params->zero && nb >= 0)
-		ft_putchar_fd('+', 1); 
+	if (params->plus && !params->minus && params->width && !params->zero && nb >= 0)
+		ft_putchar_fd(' ', 1); 
 }

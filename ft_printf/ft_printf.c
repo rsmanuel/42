@@ -15,11 +15,6 @@ void debug_params(t_struct *params)
 	printf("\n\n");
 }
 
-void	print_c(va_list ap)
-{
-	ft_putchar_fd(va_arg(ap, int), 1); 
-}
-
 void	print_s(va_list ap)
 {
 	ft_putstr_fd(va_arg(ap, char *), 1);

@@ -1,5 +1,5 @@
-#include "libft/libft.h"
-#include "ft_printf.h"
+#include "../libft/libft.h"
+#include "../ft_printf.h"
 
 int main(void)
 {
@@ -57,6 +57,11 @@ int main(void)
 	printf("width: 0\n");
 	ft_printf("ft_printf:\t[%0d]\n", -2035065302);
 	printf("printf:\t\t[%0d]\n", -2035065302);
+	printf("------------------------------------------------------------\n");
+	printf("width: 5 with *\n");
+	ft_printf("ft_printf:\t[%*d]\n", 5, 0);
+	printf("printf:\t\t[%*d]\n", 5, 0);
+	
 
 	printf("------------------------------------------------------------\n");
 	printf("\t\t%%d MINUS and WIDTH\n");
@@ -106,8 +111,8 @@ int main(void)
 
 	/* %d PLUS SIGN */
 	printf("width: 5\n");
-	ft_printf("ft_printf:\t[%+05d]\n", 0);
-	printf("printf:\t\t[%+05d]\n", 0);
+	ft_printf("ft_printf:\t[%+5d]\n", 0);
+	printf("printf:\t\t[%+5d]\n", 0);
 	printf("------------------------------------------------------------\n");
 	printf("width: 10\n");
 	ft_printf("ft_printf:\t[%+10d]\n", -7);
@@ -118,8 +123,8 @@ int main(void)
 	printf("printf:\t\t[%+40d]\n", 1560133635);
 	printf("------------------------------------------------------------\n");
 	printf("width: 0\n");
-	ft_printf("ft_printf:\t[%+0d]\n", -2035065302);
-	printf("printf:\t\t[%+0d]\n", -2035065302);
+	ft_printf("ft_printf:\t[%+5d]\n", -2035065302);
+	printf("printf:\t\t[%+5d]\n", -2035065302);
 
 	printf("------------------------------------------------------------\n");
 	printf("\t\t%%d PLUS SIGN and ZERO-FILL\n");
@@ -141,4 +146,47 @@ int main(void)
 	printf("width: 0\n");
 	ft_printf("ft_printf:\t[%+00d]\n", -2035065302);
 	printf("printf:\t\t[%+00d]\n", -2035065302);
+
+	printf("------------------------------------------------------------\n");
+	printf("\t\t%%d SPACE and MINUS and WIDTH\n");
+	printf("------------------------------------------------------------\n");
+
+	/* %d SPACE and MINUS and WIDTH*/
+	printf("width: 5\n");
+	ft_printf("ft_printf:\t[% -5d]\n", 0);
+	printf("printf:\t\t[% -5d]\n", 0);
+	printf("------------------------------------------------------------\n");
+	printf("width: 10\n");
+	ft_printf("ft_printf:\t[% -10d]\n", -7);
+	printf("printf:\t\t[% -10d]\n", -7);
+	printf("------------------------------------------------------------\n");
+	printf("width: 40\n");
+	ft_printf("ft_printf:\t[% -40d]\n", 1560133635);
+	printf("printf:\t\t[% -40d]\n", 1560133635);
+	printf("------------------------------------------------------------\n");
+	printf("width: 0\n");
+	ft_printf("ft_printf:\t[% -d]\n", -2035065302);
+	printf("printf:\t\t[% -d]\n", -2035065302);
+
+	printf("------------------------------------------------------------\n");
+	printf("\t\t%%d SPACE and ZERO and WIDTH\n");
+	printf("------------------------------------------------------------\n");
+
+	/* %d PLUS */
+	printf("width: 5\n");
+	ft_printf("ft_printf:\t[% 05d]\n", 0);
+	printf("printf:\t\t[% 05d]\n", 0);
+	printf("------------------------------------------------------------\n");
+	printf("width: 10\n");
+	ft_printf("ft_printf:\t[% 010d]\n", -7);
+	printf("printf:\t\t[% 010d]\n", -7);
+	printf("------------------------------------------------------------\n");
+	printf("width: 40\n");
+	ft_printf("ft_printf:\t[% 040d]\n", 1560133635);
+	printf("printf:\t\t[% 040d]\n", 1560133635);
+	printf("------------------------------------------------------------\n");
+	printf("width: 0\n");
+	ft_printf("ft_printf:\t[% 0d]\n", -2035065302);
+	printf("printf:\t\t[% 0d]\n", -2035065302);
+
 }
