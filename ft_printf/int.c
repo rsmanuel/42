@@ -43,7 +43,7 @@ void ft_d_aux(t_struct *params, int len, int nb)
 	{
 		if (params->space && params->width && !params->zero && nb >= 0)
 			ft_putchar_fd(' ', 1);
-		if (params->plus && !params->minus && params->zero && nb >= 0)
+		else if (params->plus && !params->minus && params->zero && nb >= 0)
 			ft_putchar_fd('+', 1);
 		while (width-- > 0)
 			ft_putchar_fd('0', 1);
@@ -51,5 +51,5 @@ void ft_d_aux(t_struct *params, int len, int nb)
 	while (width-- > 0)
 		ft_putchar_fd(' ', 1);
 	if (params->plus && !params->minus && params->width && !params->zero && nb >= 0)
-		ft_putchar_fd(' ', 1); 
+		ft_putchar_fd('+', 1); 
 }
