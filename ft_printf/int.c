@@ -19,9 +19,22 @@ void	print_d(va_list ap, t_struct *params)
 	if ((params->plus || params->space) && nb >= 0)
 		len++;
 	print_d_aux(params, len, nb, str);
+	/*print_d_aux(params, len, nb, str);*/
 }
 
 void	print_d_aux(t_struct *params, int len, int nb, char *str)
+{
+	ft_width(params, len, nb);
+	if (params->minus && !params->space)
+		ft_plus(params, nb);
+	else if (params->space)
+		ft_space(params, nb);
+	ft_zero(params, len, nb);
+	ft_putstr_fd(str, 1);
+	ft_minus(params, len, nb);
+}
+
+/*void	print_d_aux(t_struct *params, int len, int nb, char *str)
 {
 	if (params->space && params->width && nb >= 0)
 		ft_putchar_fd(' ', 1);
@@ -52,4 +65,4 @@ void ft_d_aux(t_struct *params, int len, int nb)
 		ft_putchar_fd(' ', 1);
 	if (params->plus && !params->minus && params->width && !params->zero && nb >= 0)
 		ft_putchar_fd('+', 1); 
-}
+}*/
