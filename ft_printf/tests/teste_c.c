@@ -15,21 +15,15 @@ int main(void)
 	printf("\t\tWIDTH %%c\n");
 	printf("------------------------------------------------------------\n");
 
-    ft_printf("ft_printf:\t[%5c]\n", 'a');
-    printf("printf:\t\t[%5c]\n", 'a');
+    ft_printf("ft_printf:\t[%-05c]\n", 'a');
+    printf("printf:\t\t[%-05c]\n", 'a');
     printf("------------------------------------------------------------\n");
 
     printf("------------------------------------------------------------\n");
 	printf("\t\tZERO-FILL %%c\n");
 	printf("------------------------------------------------------------\n");
 
-    ft_printf("ft_printf:\t[%5c]\n", 'a');
-    printf("printf:\t\t[%5c]\n", 'a');
+    ft_printf("ft_printf:\t[%-05d]\n", 2);
+    printf("printf:\t\t[%-05d]\n", 2);
     printf("------------------------------------------------------------\n");
-
-
-
-
-
-
 }

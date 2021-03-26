@@ -70,7 +70,7 @@ int main(void)
 	/* %d MINUS and WIDTH */
 	printf("width: 5\n");
 	ft_printf("ft_printf:\t[%-5d]\n", 0);
-	printf("printf:\t\t[%-5d]\n", 0);
+	printf("printf:\t\t[%-5f]\n", 1.23);
 	printf("------------------------------------------------------------\n");
 	printf("width: 10\n");
 	ft_printf("ft_printf:\t[%-10d]\n", -7);
@@ -111,8 +111,8 @@ int main(void)
 
 	/* %d PLUS SIGN */
 	printf("width: 5\n");
-	ft_printf("ft_printf:\t[%+5d]\n", 0);
-	printf("printf:\t\t[%+5d]\n", 0);
+	ft_printf("ft_printf:\t[%+-5d]\n", 0);
+	printf("printf:\t\t[%+-5d]\n", 0);
 	printf("------------------------------------------------------------\n");
 	printf("width: 10\n");
 	ft_printf("ft_printf:\t[%+10d]\n", -7);
@@ -182,8 +182,8 @@ int main(void)
 	printf("printf:\t\t[% 010d]\n", -7);
 	printf("------------------------------------------------------------\n");
 	printf("width: 40\n");
-	ft_printf("ft_printf:\t[% 040d]\n", 1560133635);
-	printf("printf:\t\t[% 040d]\n", 1560133635);
+	ft_printf("ft_printf:\t[%  040d]\n", 1560133635);
+	printf("printf:\t\t[%  040d]\n", 1560133635);
 	printf("------------------------------------------------------------\n");
 	printf("width: 0\n");
 	ft_printf("ft_printf:\t[% 0d]\n", -2035065302);
