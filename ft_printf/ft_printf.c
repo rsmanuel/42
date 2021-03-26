@@ -2,7 +2,7 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void debug_params(t_struct *params)
+/*void debug_params(t_struct *params)
 {
 	printf("\n\n");
 	printf("\tminus: \t\t%d\n", params->minus);
@@ -13,7 +13,7 @@ void debug_params(t_struct *params)
 	printf("\twidth: \t\t%d\n", params->width);
 	printf("\tprecision: \t%d\n", params->precision);
 	printf("\n\n");
-}
+}*/
 
 void	print_s(va_list ap)
 {
