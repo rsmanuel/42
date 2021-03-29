@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "libft/libft.h"
 #include "ft_printf.h"
 
@@ -14,11 +13,6 @@
 	printf("\tprecision: \t%d\n", params->precision);
 	printf("\n\n");
 }*/
-
-void	print_s(va_list ap)
-{
-	ft_putstr_fd(va_arg(ap, char *), 1);
-}
 
 int		ft_printf(const char *fmt, ...)
 {

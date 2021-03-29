@@ -25,7 +25,7 @@ void	print_d_aux(t_struct *params, int len, int nb, char *str)
 {
 	if (params->space && nb >= 0)
 		ft_putchar_fd(' ', 1);
-	if (!params->minus)
+	if (!params->minus && params->width && !params->zero)
 		ft_width(params, len);
 	if (params->plus && nb >= 0)
 			ft_putchar_fd('+', 1);
