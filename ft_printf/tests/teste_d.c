@@ -188,5 +188,4 @@ int main(void)
 	printf("width: 0\n");
 	ft_printf("ft_printf:\t[% 0d]\n", -2035065302);
 	printf("printf:\t\t[% 0d]\n", -2035065302);
-
 }

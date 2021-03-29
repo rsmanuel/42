@@ -29,6 +29,8 @@ void	ft_precision(t_struct *params, int len, char *str)
 	int i;
 
 	i = 0;
+	if(!str)
+		return ;
 	if (params->width && !params->zero)
 	{
 		while (i < len - params->precision)
@@ -46,7 +48,7 @@ void	ft_precision(t_struct *params, int len, char *str)
 		}
 	}
 	i = 0;
-	while (i < params->precision)
+	while (str[i] != '\0' && i < params->precision)
 	{
 		ft_putchar_fd(str[i], 1);
 		i++;

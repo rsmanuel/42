@@ -5,4 +5,6 @@ int main(void)
 {
     printf("[%50.20s]\n", "this is a string");
     ft_printf("[%50.20s]", "this is a string");
+
+    sleep(7);
 }
