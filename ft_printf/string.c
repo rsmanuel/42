@@ -8,6 +8,7 @@ void	print_s(va_list ap, t_struct *params)
 
     str = va_arg(ap, char *);
     len = ft_strlen(str);
+    params->str = str;
     print_s_aux(params, len, str);
 }
 

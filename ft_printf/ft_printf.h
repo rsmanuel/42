@@ -29,7 +29,7 @@ void	print(va_list ap, t_struct *params);
 void	print_c(va_list ap, t_struct *params);
 void	print_s(va_list ap, t_struct *params);
 void	print_d(va_list ap, t_struct *params);
-void	parse_flags(const char *str, va_list ap, t_struct *params);
+void	parse_flags(const char *str, t_struct *params);
 void	parse_precision(const char *str, va_list ap, t_struct *params);
 void	parse_width(const char *str, va_list ap, t_struct *params);
 int		parse_str(const char *str, va_list ap, t_struct *params);
@@ -40,7 +40,5 @@ void	print_s_aux(t_struct *params, int len, char *str);
 void	ft_width(t_struct *params, int len);
 void	ft_zero(t_struct *params, int len);
 void	ft_precision(t_struct *params, int len, char *str);
-
-
 
 #endif

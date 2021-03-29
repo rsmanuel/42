@@ -1,7 +1,7 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void parse_flags(const char *str, va_list ap, t_struct *params)
+void parse_flags(const char *str, t_struct *params)
 {
 	while(ft_strchr("-+ 0#", *str))
 	{
@@ -63,7 +63,7 @@ void parse_width(const char *str, va_list ap, t_struct *params)
 void    parse_modifiers(const char *str, va_list ap, t_struct *params)
 {
 	reset_struct(params);
-	parse_flags(str, ap, params);
+	parse_flags(str, params);
 	parse_width(str, ap, params);
 	parse_precision(str, ap, params);
 	//debug_params(params);

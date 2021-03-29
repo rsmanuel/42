@@ -3,6 +3,6 @@
 
 int main(void)
 {
-    printf("[%050.10s]\n", "this is a string");
-    ft_printf("[%050.10s]", "this is a string");
+    printf("[%50.20s]\n", "this is a string");
+    ft_printf("[%50.20s]", "this is a string");
 }

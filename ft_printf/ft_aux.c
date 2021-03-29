@@ -7,7 +7,7 @@ void	ft_width(t_struct *params, int len)
 
 	width = params->width - len;
 	{
-		while(width-- > 0)
+		while (width-- > 0)
 			ft_putchar_fd(' ', 1);
 	}
 }
@@ -19,7 +19,7 @@ void	ft_zero(t_struct *params, int len)
 	width = params->width - len;
 	if (params->zero && params->width && !params->minus)
 	{
-		while(width-- > 0)
+		while (width-- > 0)
 			ft_putchar_fd('0', 1);
 	}
 }
@@ -29,10 +29,21 @@ void	ft_precision(t_struct *params, int len, char *str)
 	int i;
 
 	i = 0;
-	while(i < len - params->precision)
+	if (params->width && !params->zero)
 	{
-		ft_putchar_fd(' ', 1);
-		i++;
+		while (i < len - params->precision)
+		{
+			ft_putchar_fd(' ', 1);
+			i++;
+		}
+	}
+	else if (params->width && params->zero)
+	{
+		while (i < len - params->precision)
+		{
+			ft_putchar_fd('0', 1);
+			i++;
+		}
 	}
 	i = 0;
 	while (i < params->precision)
