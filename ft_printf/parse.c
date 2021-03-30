@@ -23,6 +23,7 @@ void parse_precision(const char *str, va_list ap, t_struct *params)
 {
 	int i;
 	int start;
+	char *sub;
 
 	i = 0;
 	while (ft_strchr("-+ 0#", str[i]) || ft_strchr("*0123456789", str[i]))
@@ -37,13 +38,16 @@ void parse_precision(const char *str, va_list ap, t_struct *params)
 	}
 	while(ft_strchr("0123456789", str[i]))
 		i++;
-	params->precision = ft_atoi(ft_substr(str, start, i - start));
+	sub = ft_substr(str, start, i - start);
+	params->precision = ft_atoi(sub);
+	free(sub);
 }
 
 void parse_width(const char *str, va_list ap, t_struct *params)
 {
 	int i;
 	int start;
+	char *sub;
 
 	i = 0;
 	start = 0;
@@ -57,7 +61,9 @@ void parse_width(const char *str, va_list ap, t_struct *params)
 	}
 	while (ft_strchr("0123456789", str[i]))
 			i++;
-	params->width = ft_atoi(ft_substr(str, start, i - start));
+	sub = ft_substr(str, start, i - start);
+	params->width = ft_atoi(sub);
+	free(sub);
 }
 
 void    parse_modifiers(const char *str, va_list ap, t_struct *params)

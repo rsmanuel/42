@@ -19,6 +19,7 @@ void	print_d(va_list ap, t_struct *params)
 	if ((params->plus || params->space) && nb >= 0)
 		len++;
 	print_d_aux(params, len, nb, str);
+	free(str);
 }
 
 void	print_d_aux(t_struct *params, int len, int nb, char *str)
