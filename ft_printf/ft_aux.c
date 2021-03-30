@@ -28,24 +28,19 @@ void	ft_zero(t_struct *params, int len)
 
 void	ft_precision(t_struct *params, int len, char *str)
 {
-	int	i;
+	int		i;
+	char	c;
 
 	i = 0;
+	c = 0;
 	if (params->width && !params->zero)
-	{
-		while (i < len - params->precision)
-		{
-			ft_putchar_fd(' ', 1);
-			i++;
-		}
-	}
+		c = ' ';
 	else if (params->width && params->zero)
+		c = '0';
+	while (c && i < len - params->precision)
 	{
-		while (i < len - params->precision)
-		{
-			ft_putchar_fd('0', 1);
-			i++;
-		}
+		ft_putchar_fd(c, 1);
+		i++;
 	}
 	i = 0;
 	while (str[i] != '\0' && i < params->precision)
