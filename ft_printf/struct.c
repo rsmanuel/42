@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void reset_struct(t_struct *params)
+void	reset_struct(t_struct *params)
 {
 	params->minus = 0;
 	params->plus = 0;

@@ -3,8 +3,10 @@
 
 void	ft_width(t_struct *params, int len)
 {
-	int width;
+	int	width;
 
+	if (params->width < 0)
+		params->width = -(params->width);
 	width = params->width - len;
 	{
 		while (width-- > 0)
@@ -14,7 +16,7 @@ void	ft_width(t_struct *params, int len)
 
 void	ft_zero(t_struct *params, int len)
 {
-	int width;
+	int	width;
 
 	width = params->width - len;
 	if (params->zero && params->width && !params->minus)
@@ -26,11 +28,9 @@ void	ft_zero(t_struct *params, int len)
 
 void	ft_precision(t_struct *params, int len, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(!str)
-		return ;
 	if (params->width && !params->zero)
 	{
 		while (i < len - params->precision)

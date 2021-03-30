@@ -29,7 +29,7 @@ void	print_d_aux(t_struct *params, int len, int nb, char *str)
 	if (!params->minus && params->width && !params->zero)
 		ft_width(params, len);
 	if (params->plus && nb >= 0)
-			ft_putchar_fd('+', 1);
+		ft_putchar_fd('+', 1);
 	ft_zero(params, len);
 	ft_putstr_fd(str, 1);
 	if (params->minus)

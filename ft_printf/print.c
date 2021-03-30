@@ -1,7 +1,7 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void print(va_list ap, t_struct *params)
+void	print(va_list ap, t_struct *params)
 {
 	if (params->conversion == 'c')
 		print_c(ap, params);

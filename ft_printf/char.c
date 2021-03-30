@@ -3,8 +3,8 @@
 
 void	print_c(va_list ap, t_struct *params)
 {
-	char c;
-	int len;
+	char	c;
+	int		len;
 
 	c = va_arg(ap, int);
 	len = 1;
@@ -13,10 +13,10 @@ void	print_c(va_list ap, t_struct *params)
 
 void	print_c_aux(t_struct *params, int len, char c)
 {
-	if (!params->minus && params->width && !params->zero)
+	if (!params->minus && params->width >= 0 && !params->zero)
 		ft_width(params, len);
 	ft_zero(params, len);
 	ft_putchar_fd(c, 1);
-	if (params->minus)
+	if (params->minus || params->width < 0)
 		ft_width(params, len);
 }

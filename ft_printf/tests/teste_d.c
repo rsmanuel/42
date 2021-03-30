@@ -1,191 +1,89 @@
 #include "../libft/libft.h"
 #include "../ft_printf.h"
+#include <limits.h>
 
 int main(void)
 {
-	printf("------------------------------------------------------------\n");
-	printf("\t\tJUST %%d\n");
-	printf("------------------------------------------------------------\n");
-
-	/* JUST %d */
-	ft_printf("ft_printf:\t[%d]\n", 0);
-	printf("printf:\t\t[%d]\n", 0);
-	printf("------------------------------------------------------------\n");
-	ft_printf("ft_printf:\t[%d]\n", -7);
-	printf("printf:\t\t[%d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	ft_printf("ft_printf:\t[%d]\n", 1560133635);
-	printf("printf:\t\t[%d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	ft_printf("ft_printf:\t[%d]\n", -2035065302);
-	printf("printf:\t\t[%d]\n", -2035065302);
-
-    printf("------------------------------------------------------------\n");
-	printf("\t\tMULTIPLE %%d\n");
-	printf("------------------------------------------------------------\n");
-
-    /* MULTIPLE %d */
-	ft_printf("ft_printf:\t[%d], [%d], [%d]\n", 0, -1, 2);
-	printf("printf:\t\t[%d], [%d], [%d]\n", 0, -1, 2);
-	printf("------------------------------------------------------------\n");
-	ft_printf("ft_printf:\t[%d], [%d], [%d]\n", -7, 55, -123);
-	printf("printf:\t\t[%d], [%d], [%d]\n", -7, 55, -123);
-	printf("------------------------------------------------------------\n");
-	ft_printf("ft_printf:\t[%d], [%d], [%d]\n", 1560133635, -1231, -1);
-	printf("printf:\t\t[%d], [%d], [%d]\n", 1560133635, -1231, -1);
-	printf("------------------------------------------------------------\n");
-	ft_printf("ft_printf:\t[%d], [%d], [%d], [%d], [%d]\n", -2035065302, 12, 123, 123124, -555);
-	printf("printf:\t\t[%d], [%d], [%d], [%d], [%d]\n", -2035065302, 12, 123, 123124, -555);
-
-	printf("------------------------------------------------------------\n");
-	printf("\t\t%%d WIDTH\n");
-	printf("------------------------------------------------------------\n");
-
-	/* %d WIDTH */
-	printf("width: 5\n");
-	ft_printf("ft_printf:\t[%5d]\n", 0);
-	printf("printf:\t\t[%5d]\n", 0);
-	printf("------------------------------------------------------------\n");
-	printf("width: 10\n");
-	ft_printf("ft_printf:\t[%10d]\n", -7);
-	printf("printf:\t\t[%10d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	printf("width: 40\n");
-	ft_printf("ft_printf:\t[%40d]\n", 1560133635);
-	printf("printf:\t\t[%40d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	printf("width: 0\n");
-	ft_printf("ft_printf:\t[%0d]\n", -2035065302);
-	printf("printf:\t\t[%0d]\n", -2035065302);
-	printf("------------------------------------------------------------\n");
-	printf("width: 5 with *\n");
-	ft_printf("ft_printf:\t[%*d]\n", 5, 0);
-	printf("printf:\t\t[%*d]\n", 5, 0);
-	
-
-	printf("------------------------------------------------------------\n");
-	printf("\t\t%%d MINUS and WIDTH\n");
-	printf("------------------------------------------------------------\n");
-
-	/* %d MINUS and WIDTH */
-	printf("width: 5\n");
-	ft_printf("ft_printf:\t[%-5d]\n", 0);
-	printf("printf:\t\t[%-5f]\n", 1.23);
-	printf("------------------------------------------------------------\n");
-	printf("width: 10\n");
-	ft_printf("ft_printf:\t[%-10d]\n", -7);
-	printf("printf:\t\t[%-10d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	printf("width: 40\n");
-	ft_printf("ft_printf:\t[%-40d]\n", 1560133635);
-	printf("printf:\t\t[%-40d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	printf("width: 0\n");
-	ft_printf("ft_printf:\t[%-d]\n", -2035065302);
-	printf("printf:\t\t[%-d]\n", -2035065302);
-
-	printf("------------------------------------------------------------\n");
-	printf("\t\t%%d ZERO-FILL\n");
-	printf("------------------------------------------------------------\n");
-
-	/* %d ZERO-FILL */
-	printf("width: 5\n");
-	ft_printf("ft_printf:\t[%05d]\n", 0);
-	printf("printf:\t\t[%05d]\n", 0);
-	printf("------------------------------------------------------------\n");
-	printf("width: 10\n");
-	ft_printf("ft_printf:\t[%010d]\n", -7);
-	printf("printf:\t\t[%010d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	printf("width: 40\n");
-	ft_printf("ft_printf:\t[%040d]\n", 1560133635);
-	printf("printf:\t\t[%040d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	printf("width: 0\n");
-	ft_printf("ft_printf:\t[%00d]\n", -2035065302);
-	printf("printf:\t\t[%00d]\n", -2035065302);
-
-	printf("------------------------------------------------------------\n");
-	printf("\t\t%%d PLUS SIGN\n");
-	printf("------------------------------------------------------------\n");
-
-	/* %d PLUS SIGN */
-	printf("width: 5\n");
-	ft_printf("ft_printf:\t[%+-5d]\n", 0);
-	printf("printf:\t\t[%+-5d]\n", 0);
-	printf("------------------------------------------------------------\n");
-	printf("width: 10\n");
-	ft_printf("ft_printf:\t[%+10d]\n", -7);
-	printf("printf:\t\t[%+10d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	printf("width: 40\n");
-	ft_printf("ft_printf:\t[%+40d]\n", 1560133635);
-	printf("printf:\t\t[%+40d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	printf("width: 0\n");
-	ft_printf("ft_printf:\t[%+5d]\n", -2035065302);
-	printf("printf:\t\t[%+5d]\n", -2035065302);
-
-	printf("------------------------------------------------------------\n");
-	printf("\t\t%%d PLUS SIGN and ZERO-FILL\n");
-	printf("------------------------------------------------------------\n");
-
-	/* %d PLUS SIGN and ZERO-FILL */
-	printf("width: 5\n");
-	ft_printf("ft_printf:\t[%+05d]\n", 3);
-	printf("printf:\t\t[%+05d]\n", 3);
-	printf("------------------------------------------------------------\n");
-	printf("width: 10\n");
-	ft_printf("ft_printf:\t[%+010d]\n", -7);
-	printf("printf:\t\t[%+010d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	printf("width: 40\n");
-	ft_printf("ft_printf:\t[%+040d]\n", 1560133635);
-	printf("printf:\t\t[%+040d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	printf("width: 0\n");
-	ft_printf("ft_printf:\t[%+00d]\n", -2035065302);
-	printf("printf:\t\t[%+00d]\n", -2035065302);
-
-	printf("------------------------------------------------------------\n");
-	printf("\t\t%%d SPACE and MINUS and WIDTH\n");
-	printf("------------------------------------------------------------\n");
-
-	/* %d SPACE and MINUS and WIDTH*/
-	printf("width: 5\n");
-	ft_printf("ft_printf:\t[% -5d]\n", 0);
-	printf("printf:\t\t[% -5d]\n", 0);
-	printf("------------------------------------------------------------\n");
-	printf("width: 10\n");
-	ft_printf("ft_printf:\t[% -10d]\n", -7);
-	printf("printf:\t\t[% -10d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	printf("width: 40\n");
-	ft_printf("ft_printf:\t[% -40d]\n", 1560133635);
-	printf("printf:\t\t[% -40d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	printf("width: 0\n");
-	ft_printf("ft_printf:\t[% -d]\n", -2035065302);
-	printf("printf:\t\t[% -d]\n", -2035065302);
-
-	printf("------------------------------------------------------------\n");
-	printf("\t\t%%d SPACE and ZERO and WIDTH\n");
-	printf("------------------------------------------------------------\n");
-
-	/* %d PLUS */
-	printf("width: 5\n");
-	ft_printf("ft_printf:\t[% 05d]\n", 0);
-	printf("printf:\t\t[% 05d]\n", 0);
-	printf("------------------------------------------------------------\n");
-	printf("width: 10\n");
-	ft_printf("ft_printf:\t[% 010d]\n", -7);
-	printf("printf:\t\t[% 010d]\n", -7);
-	printf("------------------------------------------------------------\n");
-	printf("width: 40\n");
-	ft_printf("ft_printf:\t[%  040d]\n", 1560133635);
-	printf("printf:\t\t[%  040d]\n", 1560133635);
-	printf("------------------------------------------------------------\n");
-	printf("width: 0\n");
-	ft_printf("ft_printf:\t[% 0d]\n", -2035065302);
-	printf("printf:\t\t[% 0d]\n", -2035065302);
+	/*printf(" %d \n", 0);
+	ft_printf(" %d \n", 0);*/
+	printf(" %.d \n", 0);
+	ft_printf(" %.d \n", 0);/*
+	printf(" %-.2d ", 0);
+	printf(" %-2.2d ", 0);
+	printf(" %-3.2d ", 0);
+	printf(" %-3.2d %10.42d ", 0, 0);
+	printf(" %-3.2d %10.42d ", 1, -1);
+	printf(" %-3.2d %10.42d ", 10, -10);
+	printf(" *%-*.*d* *%*.*d* ", 4, 5, 10, 10, 21, -10);
+	printf(" *%-*.*d* *%*.*d* ", 6, 2, 102, 10, 21, -101);
+	printf(" *%*.*d* *%*.*d* ", -6, 2, 102, 10, 21, 101);
+	printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 6, 2, 102, 10, 21, -101);
+	printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 2, 6, 102, 21, 10, -101);
+	printf(" 0*%0-*d*0 0*%0*d*0 ", 21, 1021, 21, -1011);
+	printf(" 0*%-0*.10d*0 0*%-0*.0d*0 ", 21, 1021, 21, -1011);
+	printf(" --0*%0*.0d*0 0*%0*.10d*0-- ", -2, 0, 21, 1);
+	printf(" --0*%0*.0d*0 0*%0*.10d*0-- ", -21, INT_MAX, 21, INT_MIN);
+	printf(" --0*%0*.0d*0 0*%0*.10d*0-- ", -21, LONG_MAX, 21, LONG_MIN);
+	printf(" --0*%-0*.20d*0 0*%-0*.10d*0-- ", -21, CHAR_MAX, 21, CHAR_MIN);
+	printf(" --0*%-0*.2d*0 0*%-0*.2d*0-- ", -21, CHAR_MAX, 21, CHAR_MIN);
+	printf(" --0*%-0*.3d*0 0*%-0*.3d*0-- ", -21, CHAR_MAX, 21, CHAR_MIN);
+	printf(" --0*%-0*.4d*0 0*%-0*.4d*0-- ", -21, CHAR_MAX, 21, CHAR_MIN);
+	printf("%9.2d", UINT_MAX);
+	printf("%9.10d", UINT_MAX);
+	printf("%10.0d", UINT_MAX);
+	printf("%10.1d", UINT_MAX);
+	printf("%10.2d", UINT_MAX);
+	printf("%10.10d", UINT_MAX);
+	printf("%11.0d", UINT_MAX);
+	printf("%11.1d", UINT_MAX);
+	printf("%11.2d", UINT_MAX);
+	printf("%11.10d", UINT_MAX);
+	printf("%-9.0d", UINT_MAX);
+	printf("%-9.1d", UINT_MAX);
+	printf("%-9.2d", UINT_MAX);
+	printf("%-9.10d", UINT_MAX);
+	printf("%-10.0d", UINT_MAX);
+	printf("%-10.1d", UINT_MAX);
+	printf("%-10.2d", UINT_MAX);
+	printf("%-10.10d", UINT_MAX);
+	printf("%-11.0d", UINT_MAX);
+	printf("%-11.1d", UINT_MAX);
+	printf("%-11.2d", UINT_MAX);
+	printf("%-11.10d", UINT_MAX);
+	printf("%09.0d", UINT_MAX);
+	printf("%09.1d", UINT_MAX);
+	printf("%09.2d", UINT_MAX);
+	printf("%09.10d", UINT_MAX);
+	printf("%010.0d", UINT_MAX);
+	printf("%010.1d", UINT_MAX);
+	printf("%010.2d", UINT_MAX);
+	printf("%010.10d", UINT_MAX);
+	printf("%011.0d", UINT_MAX);
+	printf("%011.1d", UINT_MAX);
+	printf("%011.2d", UINT_MAX);
+	printf("%011.10d", UINT_MAX);
+	printf("%09.0d", UINT_MAX + 1);
+	printf("%09.1d", UINT_MAX + 1);
+	printf("%09.2d", UINT_MAX + 1);
+	printf("%09.10d", UINT_MAX + 1);
+	printf("%010.0d", UINT_MAX + 1);
+	printf("%010.1d", UINT_MAX + 1);
+	printf("%010.2d", UINT_MAX + 1);
+	printf("%010.10d", UINT_MAX + 1);
+	printf("%011.0d", UINT_MAX + 1);
+	printf("%011.1d", UINT_MAX + 1);
+	printf("%011.2d", UINT_MAX + 1);
+	printf("%011.10d", UINT_MAX + 1);
+	printf("%.0d", 0);
+	printf("%.0d", 5);
+	printf("%.0d", 10);
+	printf("%1.d", 0);
+	printf("%2.d", 0);
+	printf("%3.d", 0);
+	printf("%1.1d", 0);
+	printf("%1.2d", 0);
+	printf("%1.3d", 0);
+	printf("%1.1d", 0);
+	printf("%2.2d", 0);
+	printf("%3.3d", 0);*/
 }

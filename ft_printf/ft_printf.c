@@ -14,22 +14,22 @@
 	printf("\n\n");
 }*/
 
-int		ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
-	int i;
-	va_list ap;
-	t_struct *params;
-	
+	int			i;
+	va_list		ap;
+	t_struct	*params;
+
 	i = 0;
 	va_start(ap, fmt);
 	params = (t_struct *)malloc(sizeof(t_struct));
-	reset_struct(params);						
+	reset_struct(params);
 	if (!params)
 		return (0);
 	while (fmt[i])
 	{
 		if (fmt[i] == '%')
-			i += parse_str(&fmt[i + 1], ap, params); 
+			i += parse_str(&fmt[i + 1], ap, params);
 		else
 			ft_putchar_fd(fmt[i], 1);
 		i++;
