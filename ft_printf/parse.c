@@ -26,6 +26,7 @@ void	parse_precision(const char *str, va_list ap, t_struct *params)
 	char	*sub;
 
 	i = 0;
+	params->precision = -1;
 	while (ft_strchr("-+ 0#", str[i]) || ft_strchr("*0123456789", str[i]))
 		i++;
 	if (str[i] != '.')
@@ -54,7 +55,7 @@ void	parse_width(const char *str, va_list ap, t_struct *params)
 	while (ft_strchr("-+ 0#", str[i]))
 		i++;
 	start = i;
-	if (str[start] == '*')
+	if (str[i] == '*')
 	{
 		params->width = va_arg(ap, int);
 		return ;

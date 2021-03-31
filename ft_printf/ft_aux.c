@@ -22,13 +22,10 @@ void	ft_zero(t_struct *params, int len, t_count *count)
 	int	width;
 
 	width = params->width - len;
-	if (params->zero && params->width && !params->minus)
+	while (width-- > 0)
 	{
-		while (width-- > 0)
-		{
-			ft_putchar_fd('0', 1);
-			count->ret++;
-		}
+		ft_putchar_fd('0', 1);
+		count->ret++;
 	}
 }
 

@@ -15,6 +15,7 @@ void	print_c_aux(t_struct *params, int len, char c, t_count *count)
 {
 	if (!params->minus && params->width >= 0 && !params->zero)
 		ft_width(params, len, count);
+	if (params->zero && params->width && !params->minus && !params->precision)
 	ft_zero(params, len, count);
 	ft_putchar_fd(c, 1);
 	if (params->minus || params->width < 0)
