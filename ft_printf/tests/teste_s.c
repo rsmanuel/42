@@ -3,5 +3,6 @@
 
 int main(void)
 {
-    ft_printf("%5c\n", 'a');
+    printf("%.s\n", "ola");
+    printf("\n<%d>\n", ft_printf("%.s", "ola"));
 }
