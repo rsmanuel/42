@@ -1,7 +1,7 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void	print_d(va_list ap, t_struct *params)
+void	print_d(va_list ap, t_struct *params, t_count *count)
 {
 	int		nb;
 	char	*str;
@@ -18,20 +18,21 @@ void	print_d(va_list ap, t_struct *params)
 	params->str = str;
 	if ((params->plus || params->space) && nb >= 0)
 		len++;
-	print_d_aux(params, len, nb, str);
+	print_d_aux(params, len, nb, str, count);
 	free(str);
 }
 
-void	print_d_aux(t_struct *params, int len, int nb, char *str)
+void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
 {
 	if (params->space && nb >= 0)
 		ft_putchar_fd(' ', 1);
 	if (!params->minus && params->width && !params->zero)
-		ft_width(params, len);
+		ft_width(params, len, count);
 	if (params->plus && nb >= 0)
 		ft_putchar_fd('+', 1);
-	ft_zero(params, len);
+	ft_zero(params, len, count);
 	ft_putstr_fd(str, 1);
 	if (params->minus)
-		ft_width(params, len);
+		ft_width(params, len, count);
+	count->ret++;
 }

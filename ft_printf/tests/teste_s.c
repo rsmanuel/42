@@ -3,5 +3,5 @@
 
 int main(void)
 {
-    ft_printf("%s", "this");
+    ft_printf("%5c\n", 'a');
 }

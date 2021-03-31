@@ -7,7 +7,7 @@ int main(void)
 	/*printf(" %d \n", 0);
 	ft_printf(" %d \n", 0);*/
 	printf(" %.d \n", 0);
-	ft_printf(" %.d \n", 0);/*
+	ft_printf("[ %.d ]\n", 0);/*
 	printf(" %-.2d ", 0);
 	printf(" %-2.2d ", 0);
 	printf(" %-3.2d ", 0);
