@@ -5,8 +5,6 @@ void	ft_width(t_struct *params, int len, t_count *count)
 {
 	int	width;
 
-	if (params->width < 0)
-		params->width = -(params->width);
 	width = params->width - len;
 	{
 		while (width-- > 0)

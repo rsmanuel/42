@@ -10,36 +10,70 @@ void	print_d(va_list ap, t_struct *params, t_count *count)
 	nb = va_arg(ap, int);
 	str = ft_itoa(nb);
 	len = ft_strlen(str);
-	if ((params->minus || params->zero) && nb < 0)
+	if (nb < 0)
 	{
+		free(str);
 		str = ft_itoa(-nb);
 		ft_putchar_fd('-', 1);
 	}
 	params->str = str;
 	if ((params->plus || params->space) && nb >= 0)
 		len++;
-	//printf("\nzero: %d\n", params->zero);
-	//printf("\nminus: %d\n", params->minus);
-	//printf("\nwidth: %d\n", params->width);
-	//printf("\nprecision: %d\n", params->precision);
 	print_d_aux(params, len, nb, str, count);
 	free(str);
 }
 
+void	ft_precision_d(t_struct *params, int len, char *str, t_count *count)
+{
+	int	i;
+
+	i = 0;
+	if (len < params->precision)
+	{
+		while (i < params->precision - len)
+		{
+			ft_putchar_fd('0', 1);
+			count->ret++;
+			i++;
+		}
+	}
+	else if (params->precision == 0)
+		return ;
+	ft_putstr_fd(str, 1);
+	count->ret += 1 * len;
+}
+
 void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
 {
+	/*
+	if (params->precision > -1)
+		ft_precision(params, len, str, count);
 	if (params->space && nb >= 0)
 		ft_putchar_fd(' ', 1);
 	if (!params->minus && params->width && !params->zero)
 		ft_width(params, len, count);
 	if (params->plus && nb >= 0)
 		ft_putchar_fd('+', 1);
-	if (params->zero && params->width && !params->minus && params->precision == -1)
+	if (params->zero && params->width && !params->minus)
 		ft_zero(params, len, count);
-	if (params->precision > -1)
-		ft_zero(params, len, count);
-	ft_putstr_fd(str, 1);
-	count->ret += ft_strlen(str);
 	if (params->minus)
 		ft_width(params, len, count);
+	ft_putstr_fd(str, 1);
+	count->ret += ft_strlen(str);
+	*/
+	if (params->precision > -1)
+	{
+		if (nb < 0)
+			ft_putchar_fd('0', 1);
+		ft_precision_d(params, len, str, count);
+		if (params->minus && len <= params->precision)
+			ft_width(params, (params->precision - len) + len , count);
+		else if (params->minus && len > params->precision)
+			ft_width(params, len , count);
+		return ;
+	}
+	ft_putstr_fd(str, 1);
+	count->ret++;
+	if (params->minus)
+		ft_width(params, len , count);
 }
