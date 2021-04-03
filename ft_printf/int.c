@@ -10,7 +10,7 @@ void	print_d(va_list ap, t_struct *params, t_count *count)
 	nb = va_arg(ap, int);
 	str = ft_itoa(nb);
 	len = ft_strlen(str);
-	if (nb < 0)
+	if (nb < 0 && (!params->precision && !params->width))
 	{
 		free(str);
 		str = ft_itoa(-nb);
