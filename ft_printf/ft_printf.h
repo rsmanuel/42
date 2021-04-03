@@ -38,9 +38,9 @@ int		parse_str(const char *str, va_list ap, t_struct *params, t_count *count);
 void	print_plus(t_struct *params, int nb, int len);
 void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count);
 void	print_c_aux(t_struct *params, int len, char c, t_count *count);
-void	print_s_aux(t_struct *params, int len, char *str, t_count *count);
+void	print_s_aux(t_struct *params, char *str, t_count *count);
 void	ft_width(t_struct *params, int len, t_count *count);
 void	ft_zero(t_struct *params, int len, t_count *count);
-void	ft_precision(t_struct *params, int len, char *str, t_count *count);
+void	ft_precision(t_struct *params, char *str, t_count *count);
 
 #endif
