@@ -19,6 +19,7 @@ void	print_s_aux(t_struct *params, char *str, t_count *count)
 	char *sub;
 	int len;
 	
+	sub = NULL;
 	if (params->precision > -1)
 	{	
 		sub = ft_substr(str, 0, params->precision);
