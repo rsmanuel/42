@@ -44,22 +44,6 @@ void	ft_precision_d(t_struct *params, int len, char *str, t_count *count)
 
 void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
 {
-	/*
-	if (params->precision > -1)
-		ft_precision(params, len, str, count);
-	if (params->space && nb >= 0)
-		ft_putchar_fd(' ', 1);
-	if (!params->minus && params->width && !params->zero)
-		ft_width(params, len, count);
-	if (params->plus && nb >= 0)
-		ft_putchar_fd('+', 1);
-	if (params->zero && params->width && !params->minus)
-		ft_zero(params, len, count);
-	if (params->minus)
-		ft_width(params, len, count);
-	ft_putstr_fd(str, 1);
-	count->ret += ft_strlen(str);
-	*/
 	if (params->precision > -1)
 	{
 		if (nb < 0 && len < params->precision)
