@@ -4,14 +4,18 @@
 void	print_s(va_list ap, t_struct *params, t_count *count)
 {
 	char	*str;
+	char 	*dup;
 
 	str = va_arg(ap, char *);
-	if (!str && params->precision != 0)
-		str = ft_strdup("(null)");
+	if (!str)
+	{
+		dup = ft_strdup("(null)");
+		str = dup;
+	}
 	params->str = str;
 	print_s_aux(params, str, count);
-	if (!str && params->precision != 0)
-		free(str);	
+	if (dup)
+		free(dup);	
 }
 
 void	print_s_aux(t_struct *params, char *str, t_count *count)

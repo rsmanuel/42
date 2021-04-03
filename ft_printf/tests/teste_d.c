@@ -40,9 +40,10 @@ int main(void)
     printf("\nret: %d", ft_printf("[ 0*%021.10d*0 ]", -101));
     printf("\n");
     printf("\nret: %d", printf("[ 0*%021.10d*0 ]", -101));
-    */
     ft_printf("[ %10.s ",  "123");
     ft_printf("%1.s ]\n", "4567");
     printf("[ %10.s ",  "123");
     printf("%1.s ]", "4567");
+    */
+    ft_printf("%.2s", NULL);
 }
