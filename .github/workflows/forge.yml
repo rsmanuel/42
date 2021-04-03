@@ -1,0 +1,14 @@
+name: Deploy on Forge
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Stage
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: 'https://forge.laravel.com/servers/453545/sites/1304271/deploy/http?token=WVareweal3Q99IjSU6hlSUhyBYq5gAQ0ppH8btBT'
+        method: 'POST'
