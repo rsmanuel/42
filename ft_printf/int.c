@@ -48,7 +48,7 @@ void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
 	{
 		if (nb < 0 && len < params->precision)
 		{
-			ft_putchar_fd('0', 1);
+			ft_putchar_fd('+', 1);
 			count->ret++;
 		}
 		ft_precision_d(params, len, str, count);
