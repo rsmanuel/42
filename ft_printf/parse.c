@@ -58,6 +58,11 @@ void	parse_width(const char *str, va_list ap, t_struct *params)
 	if (str[i] == '*')
 	{
 		params->width = va_arg(ap, int);
+		if (params->width < 0)
+		{
+			params->minus = 1;
+			params->width = -(params->width);
+		}
 		return ;
 	}
 	while (ft_strchr("0123456789", str[i]))

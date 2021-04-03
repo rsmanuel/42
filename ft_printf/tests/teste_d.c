@@ -3,6 +3,7 @@
 
 int main(void)
 {
+    /*
     printf("Tester (tests with multiple %%d)\n");
     printf("\n");
     ft_printf("[ %-3.2d ", 1);
@@ -32,9 +33,12 @@ int main(void)
     ft_printf("[ %50.10d ]", 12345);
     printf("\n[ %50.10d ]", 12345);
     printf("\n<%010d>\n", -100);
-    ft_printf("<%010d>", -100);/*
+    ft_printf("<%010d>", -100);
     printf("\nret: %d", ft_printf("%5.d", -2));
     printf("\n");
     printf("\nret: %d", printf("%5.d", -2));
     */
+    printf("\nret: %d", ft_printf("[%-2c]", '0'));
+     printf("\n");
+    printf("\nret: %d", printf("[%*c]", -2, '0'));
 }
