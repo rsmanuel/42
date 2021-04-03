@@ -28,4 +28,13 @@ int main(void)
     ft_printf("[ 0*%0-6.2d*0 ", 102);
     ft_printf("0*%010.21d*0 ]", -101);
     printf("\n[ 0*%0-*.*d*0 0*%0*.*d*0 ]", 6, 2, 102, 10, 21, -101);
+    printf("\n");
+    ft_printf("[ %50.10d ]", 12345);
+    printf("\n[ %50.10d ]", 12345);
+    printf("\n<%010d>\n", -100);
+    ft_printf("<%010d>", -100);/*
+    printf("\nret: %d", ft_printf("%5.d", -2));
+    printf("\n");
+    printf("\nret: %d", printf("%5.d", -2));
+    */
 }

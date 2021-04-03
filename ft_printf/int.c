@@ -28,16 +28,15 @@ void	ft_precision_d(t_struct *params, int len, char *str, t_count *count)
 	int	i;
 
 	i = 0;
-	if (len < params->precision)
+	if (params->width && !params->minus)
+			ft_width(params, params->precision, count);
+	while (i < params->precision - len)
 	{
-		while (i < params->precision - len)
-		{
-			ft_putchar_fd('0', 1);
-			count->ret++;
-			i++;
-		}
+		ft_putchar_fd('0', 1);
+		count->ret++;
+		i++;
 	}
-	else if (params->precision == 0)
+	if (params->precision == 0 && str[0] == '0')
 		return ;
 	ft_putstr_fd(str, 1);
 	count->ret += 1 * len;
@@ -63,7 +62,7 @@ void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
 	*/
 	if (params->precision > -1)
 	{
-		if (nb < 0)
+		if (nb < 0 && len < params->precision)
 			ft_putchar_fd('0', 1);
 		ft_precision_d(params, len, str, count);
 		if (params->minus && len <= params->precision)
@@ -72,8 +71,15 @@ void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
 			ft_width(params, len , count);
 		return ;
 	}
+	if (params->width && !params->minus)
+	{
+		if (params->zero)
+			ft_zero(params, len, count);
+		else
+			ft_width(params, len, count);
+	}
 	ft_putstr_fd(str, 1);
-	count->ret++;
+	count->ret += ft_strlen(str);
 	if (params->minus)
 		ft_width(params, len , count);
 }
