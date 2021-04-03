@@ -46,7 +46,7 @@ void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
 {
 	if (params->precision > -1)
 	{
-		if (nb < 0 && len < params->precision)
+		if (nb < 0 && params->width < params->precision)
 		{
 			ft_putchar_fd('0', 1);
 			count->ret++;

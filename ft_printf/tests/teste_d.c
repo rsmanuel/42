@@ -38,7 +38,7 @@ int main(void)
     printf("\n");
     printf("\nret: %d", printf("%5.d", -2));
     */
-    printf("\nret: %d", ft_printf("[%-2c]", '0'));
-     printf("\n");
-    printf("\nret: %d", printf("[%*c]", -2, '0'));
+    printf("\nret: %d", ft_printf("[ 0*%021.10d*0 ]", -101));
+    printf("\n");
+    printf("\nret: %d", printf("[ 0*%021.10d*0 ]", -101));
 }
