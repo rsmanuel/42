@@ -3,7 +3,6 @@
 
 void	print_s(va_list ap, t_struct *params, t_count *count)
 {
-	int		len;
 	char	*str;
 
 	str = va_arg(ap, char *);
