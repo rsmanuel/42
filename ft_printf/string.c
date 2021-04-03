@@ -7,6 +7,7 @@ void	print_s(va_list ap, t_struct *params, t_count *count)
 	char 	*dup;
 
 	str = va_arg(ap, char *);
+	dup = NULL;
 	if (!str)
 	{
 		dup = ft_strdup("(null)");
