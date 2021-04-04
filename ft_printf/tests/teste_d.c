@@ -45,5 +45,5 @@ int main(void)
     printf("[ %10.s ",  "123");
     printf("%1.s ]", "4567");
     */
-    ft_printf("%.2s", NULL);
+    ft_printf("%X", 42);
 }

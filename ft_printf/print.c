@@ -9,4 +9,6 @@ void	print(va_list ap, t_struct *params, t_count *count)
 		print_s(ap, params, count);
 	else if (params->conversion == 'd' || params->conversion == 'i')
 		print_d(ap, params, count);
+	else if (params->conversion == 'x' || params->conversion == 'X')
+		print_x(ap, params, count);
 }
