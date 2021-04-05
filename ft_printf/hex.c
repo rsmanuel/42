@@ -47,4 +47,5 @@ void	print_x(va_list ap, t_struct *params, t_count *count)
 	str = ft_itox(nb, params);
 	ft_putstr_fd(str, 1);
 	count->ret++;
+	free(str);
 }
