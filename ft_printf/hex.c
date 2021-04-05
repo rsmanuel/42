@@ -44,8 +44,11 @@ void	print_x(va_list ap, t_struct *params, t_count *count)
 	char *str;
 
 	nb = va_arg(ap, unsigned int);
+	if (!nb)
+		return;
 	str = ft_itox(nb, params);
 	ft_putstr_fd(str, 1);
 	count->ret++;
-	free(str);
+	if (nb)
+		free(str);
 }
