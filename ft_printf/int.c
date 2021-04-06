@@ -1,7 +1,11 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void	print_d(va_list ap, t_struct *params, t_count *count)
+/*void	print_d_aux(t_struct *params, int len)
+{
+}*/
+
+void	print_d(va_list ap, t_struct *params)
 {
 	int		nb;
 	char	*str;
@@ -17,56 +21,9 @@ void	print_d(va_list ap, t_struct *params, t_count *count)
 		ft_putchar_fd('-', 1);
 	}
 	params->str = str;
+	params->number = nb;
 	if ((params->plus || params->space) && nb >= 0)
 		len++;
-	print_d_aux(params, len, nb, str, count);
+	//print_d_aux(params, len);
 	free(str);
-}
-
-void	ft_precision_d(t_struct *params, int len, char *str, t_count *count)
-{
-	int	i;
-
-	i = 0;
-	if (params->width && !params->minus)
-			ft_width(params, params->precision, count);
-	while (i < params->precision - len)
-	{
-		ft_putchar_fd('0', 1);
-		count->ret++;
-		i++;
-	}
-	if (params->precision == 0 && str[0] == '0')
-		return ;
-	ft_putstr_fd(str, 1);
-	count->ret += 1 * len;
-}
-
-void	print_d_aux(t_struct *params, int len, int nb, char *str, t_count *count)
-{
-	if (params->precision > -1)
-	{
-		if (nb < 0 && params->width < params->precision)
-		{
-			ft_putchar_fd('0', 1);
-			count->ret++;
-		}
-		ft_precision_d(params, len, str, count);
-		if (params->minus && len <= params->precision)
-			ft_width(params, (params->precision - len) + len , count);
-		else if (params->minus && len > params->precision)
-			ft_width(params, len , count);
-		return ;
-	}
-	if (params->width && !params->minus)
-	{
-		if (params->zero)
-			ft_zero(params, len, count);
-		else
-			ft_width(params, len, count);
-	}
-	ft_putstr_fd(str, 1);
-	count->ret += ft_strlen(str);
-	if (params->minus)
-		ft_width(params, len , count);
 }

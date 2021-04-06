@@ -38,7 +38,7 @@ char *ft_itox(unsigned long nb, t_struct *params)
 	return (str);
 }
 
-void	print_x(va_list ap, t_struct *params, t_count *count)
+void	print_x(va_list ap, t_struct *params)
 {
 	unsigned int nb;
 	char *str;
@@ -48,7 +48,7 @@ void	print_x(va_list ap, t_struct *params, t_count *count)
 		return;
 	str = ft_itox(nb, params);
 	ft_putstr_fd(str, 1);
-	count->ret++;
+	params->ret++;
 	if (nb)
 		free(str);
 }

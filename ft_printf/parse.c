@@ -80,7 +80,7 @@ void	parse_modifiers(const char *str, va_list ap, t_struct *params)
 	parse_precision(str, ap, params);
 }
 
-int	parse_str(const char *str, va_list ap, t_struct *params, t_count *count)
+int	parse_str(const char *str, va_list ap, t_struct *params)
 {
 	int		len;
 	char	*conversion;
@@ -99,6 +99,6 @@ int	parse_str(const char *str, va_list ap, t_struct *params, t_count *count)
 	if (!conversion)
 		return (0);
 	params->conversion = *conversion;
-	print(ap, params, count);
+	print(ap, params);
 	return (len);
 }
