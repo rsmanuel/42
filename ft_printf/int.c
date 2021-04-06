@@ -16,17 +16,21 @@ void	print_d(va_list ap, t_struct *params)
 {
 	int		nb;
 	char	*str;
+	int len;
 
 	nb = va_arg(ap, int);
-	str = ft_itoa(nb);
+	len = ft_strlen(str);
 	if (nb < 0)
 	{
-		free(str);
 		str = ft_itoa(-nb);
 		ft_putchar_fd('-', 1);
 	}
+	else if (nb >= 0)
+		str = ft_itoa(nb);
+	printf("\n<<%d>>", len);
 	params->str = str;
 	params->number = nb;
 	print_d_aux(params);
-	free(str);
+	if (str)
+		free(str);
 }
