@@ -16,7 +16,6 @@ void	print_d(va_list ap, t_struct *params)
 {
 	int		nb;
 	char	*str;
-	int		len;
 
 	nb = va_arg(ap, int);
 	str = ft_itoa(nb);
