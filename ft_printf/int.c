@@ -62,10 +62,10 @@ void	print_d_aux(t_struct *params)
 	{
 		if (!params->minus && params->width && !params->zero)
 			ft_width(params, (params->width - params->len));
-		ft_putstr_fd(str, 1);
-		params->ret += ft_strlen(str);
 		if (params->zero && params->width && !params->minus && !params->precision)
 			ft_zero(params, params->len);
+		ft_putstr_fd(str, 1);
+		params->ret += ft_strlen(str);
 		if (params->minus)
 			ft_width(params, (params->width - params->len));
 	}
