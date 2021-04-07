@@ -38,7 +38,8 @@ void treat_precision(t_struct *params)
 			params->len++;
 		ft_width(params, params->width - params->precision);
 	}
-	ft_putchar_fd('-', 1);
+	if (params->nb < 0)
+		ft_putchar_fd('-', 1);
 	ft_precision_d(params);
 	ft_putstr_fd(params->str, 1);
 	params->ret += ft_strlen(params->str);
