@@ -4,9 +4,7 @@
 void	ft_width(t_struct *params, int len)
 {
 	int i;
-
-	i = len;
-	i--;
+	
 	while (i-- > 0)
 	{
 		ft_putchar_fd(' ', 1);
