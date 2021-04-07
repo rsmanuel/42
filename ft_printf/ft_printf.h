@@ -17,6 +17,8 @@ typedef struct s_struct
 	int		hash;
 	int		width;
 	int		precision;
+	int		len;
+	int		nb;
 	int		ret;
 }				t_struct;
 

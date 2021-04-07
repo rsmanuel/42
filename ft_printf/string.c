@@ -17,8 +17,6 @@ void	print_s_aux(t_struct *params)
 		ft_width(params, len);
 	if (params->zero && params->width && !params->minus && !params->precision)
 		ft_zero(params, len);
-	if (params->precision > -1)
-		ft_precision(params);
 	else
 	{
 		ft_putstr_fd(params->str, 1);
