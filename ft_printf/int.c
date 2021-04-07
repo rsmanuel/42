@@ -91,7 +91,8 @@ void	print_d(va_list ap, t_struct *params)
 	{
 		free(str);
 		str = ft_itoa(-nb);
-		params->ret++;
+		if (nb != -2147483648)
+			params->ret++;
 	}
 	params->str = str;
 	params->number = nb;
