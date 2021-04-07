@@ -38,7 +38,7 @@ void treat_precision(t_struct *params)
 	ft_putstr_fd(params->str, 1);
 	params->ret += ft_strlen(params->str);
 	if (params->width > params->precision && params->minus)
-		ft_width(params, params->width - params->precision);
+		ft_width(params, params->width - params->len);
 }
 
 void	print_d_aux(t_struct *params)
