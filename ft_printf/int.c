@@ -62,8 +62,14 @@ void	print_d_aux(t_struct *params)
 	{
 		if (!params->minus && params->width && !params->zero)
 			ft_width(params, (params->width - params->len));
-		if (params->zero && params->width && !params->minus && !params->precision)
+		if (params->zero && params->width && !params->minus && params->precision == -1)
+		{
+			if (params->nb < 0)
+				ft_putchar_fd('-', 1);
 			ft_zero(params, params->len);
+		}
+		if (params->nb < 0 && !params->zero)
+			ft_putchar_fd('-', 1);
 		ft_putstr_fd(str, 1);
 		params->ret += ft_strlen(str);
 		if (params->minus)
