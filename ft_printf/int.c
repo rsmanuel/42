@@ -38,7 +38,7 @@ void treat_precision(t_struct *params)
 			params->width--;
 		ft_width(params, params->width - params->precision);
 	}
-	if (params->nb < 0 || params->nb != -2147483648)
+	if (params->nb < 0 && params->nb != -2147483648)
 		ft_putchar_fd('-', 1);
 	ft_precision_d(params);
 	if (!params->precision && params->str[0] == '0' && params->width)
@@ -94,7 +94,6 @@ void	print_d(va_list ap, t_struct *params)
 		params->ret++;
 	}
 	params->str = str;
-	printf("\n<<str: %s>>\n", str);
 	params->number = nb;
 	params->len = len;
 	print_d_aux(params);
