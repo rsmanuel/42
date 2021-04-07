@@ -30,6 +30,8 @@ void	ft_precision_d(t_struct *params)
 
 void treat_precision(t_struct *params)
 {
+	if (!params->precision && params->str[0] == '0')
+		return;
 	if (params->width > params->precision && !params->minus)
 		ft_width(params, params->width - params->precision);
 	ft_precision_d(params);
