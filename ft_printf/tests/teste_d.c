@@ -3,5 +3,5 @@
 
 int main(void)
 {
-    ft_printf("*%10.21d*", -101);
+    ft_printf("*%-6.2d*", 102);
 }

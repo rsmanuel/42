@@ -3,8 +3,11 @@
 
 void	ft_width(t_struct *params, int len)
 {
-	len--;
-	while (len-- > 0)
+	int i;
+
+	i = len;
+	i--;
+	while (i-- > 0)
 	{
 		ft_putchar_fd(' ', 1);
 		params->ret++;
