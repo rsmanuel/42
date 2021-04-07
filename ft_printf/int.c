@@ -33,6 +33,8 @@ void treat_precision(t_struct *params)
 	if (params->width > params->precision && !params->minus)
 		ft_width(params, params->width - params->precision);
 	ft_precision_d(params);
+	ft_putstr_fd(params->str, 1);
+	params->ret += ft_strlen(params->str);
 	if (params->width > params->precision && params->minus)
 		ft_width(params, params->width - params->precision);
 }
@@ -44,7 +46,7 @@ void	print_d_aux(t_struct *params)
 	str = params->str;
 	if (params->precision > -1)
 		treat_precision(params);
-	if (!(!params->precision && str[0] == '0'))
+	else
 	{
 		ft_putstr_fd(str, 1);
 		params->ret += ft_strlen(str);
