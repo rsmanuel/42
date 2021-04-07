@@ -91,6 +91,7 @@ void	print_d(va_list ap, t_struct *params)
 	{
 		free(str);
 		str = ft_itoa(-nb);
+		params->ret++;
 	}
 	params->str = str;
 	params->number = nb;
