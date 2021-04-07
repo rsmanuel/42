@@ -40,9 +40,9 @@ void treat_precision(t_struct *params)
 	}
 	if (params->nb < 0)
 		ft_putchar_fd('-', 1);
+	ft_precision_d(params);
 	if (params->precision && params->str[0] != '0' && params->width)
 	{
-		ft_precision_d(params);
 		ft_putstr_fd(params->str, 1);
 		params->ret += ft_strlen(params->str);
 	}
