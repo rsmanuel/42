@@ -10,12 +10,6 @@ void	ft_precision_d(t_struct *params)
 	i = len;
 	if (params->precision > len)
 	{
-		if (params->nb < 0)
-		{
-			ft_putchar_fd('0', 1);
-			params->ret++;
-			params->len++;
-		}
 		while (i < params->precision)
 		{
 			ft_putchar_fd('0', 1);
@@ -34,12 +28,17 @@ void treat_precision(t_struct *params)
 		return;
 	if (params->width > params->precision && !params->minus)
 	{
-		if (params->nb < 0)
-			params->width--;
-		ft_width(params, params->width - params->precision);
+		if (params->nb < 0 && params->precision > 0)
+			params->width -= 1;
+		else if (params->nb < 0 && !params->precision)
+			params->width -= 2;
+		ft_width(params, (params->width - params->precision));
 	}
 	if (params->nb < 0 && params->nb != -2147483648)
+	{
 		ft_putchar_fd('-', 1);
+		params->len++;
+	}
 	ft_precision_d(params);
 	if (!params->precision && params->str[0] == '0' && params->width)
 		ft_putchar_fd(' ', 1);
@@ -65,8 +64,11 @@ void	print_d_aux(t_struct *params)
 		if (params->zero && params->width && !params->minus)
 		{
 			if (params->nb < 0)
+			{
 				ft_putchar_fd('-', 1);
-			ft_zero(params, params->len);
+				params->len++;
+			}
+			ft_zero(params, (params->width - params->len));
 		}
 		if (params->nb < 0 && !params->zero)
 			ft_putchar_fd('-', 1);
@@ -86,14 +88,14 @@ void	print_d(va_list ap, t_struct *params)
 	nb = va_arg(ap, int);
 	params->nb = nb;
 	str = ft_itoa(nb);
-	len = ft_strlen(str);
 	if (nb < 0)
 	{
 		free(str);
 		str = ft_itoa(-nb);
 		if (nb != -2147483648)
-		params->ret++;
+			params->ret++;
 	}
+	len = ft_strlen(str);
 	params->str = str;
 	params->number = nb;
 	params->len = len;
