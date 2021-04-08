@@ -6,7 +6,7 @@ void	ft_precision_d(t_struct *params)
 	int len;
 	int i;
 
-	len = params->len;
+	len = ft_strlen(params->str);
 	i = len;
 	if (params->precision > len)
 	{
@@ -92,7 +92,7 @@ void	print_d(va_list ap, t_struct *params)
 		free(str);
 		str = ft_itoa(-nb);
 		if (nb != -2147483648)
-			params->ret++;
+		params->ret++;
 	}
 	params->str = str;
 	params->number = nb;
