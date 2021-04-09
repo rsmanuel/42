@@ -9,7 +9,6 @@ typedef struct s_struct
 {
 	char	conversion;
 	char	*str;
-	int		number;
 	int		minus;
 	int		plus;
 	int		zero;

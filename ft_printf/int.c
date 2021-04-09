@@ -3,8 +3,8 @@
 
 void	ft_precision_d(t_struct *params)
 {
-	int len;
-	int i;
+	int	len;
+	int	i;
 
 	len = ft_strlen(params->str);
 	i = len;
@@ -18,21 +18,18 @@ void	ft_precision_d(t_struct *params)
 			params->ret++;
 		}
 	}
-	else
-		return ; 
 }
 
-void treat_precision(t_struct *params)
+void	treat_precision(t_struct *params)
 {
-	if (!params->precision && params->str[0] == '0' && !params->width)
-		return;
 	if (params->width > params->precision && !params->minus)
 	{
-		if (params->nb < 0 && params->precision > 0)
+		if (params->nb < 0 && params->precision >= 0)
 			params->width -= 1;
-		else if (params->nb < 0 && !params->precision)
-			params->width -= 2;
-		ft_width(params, (params->width - params->precision));
+		if (params->precision == 0)
+			ft_width(params, (params->width - params->len));
+		else
+			ft_width(params, (params->width - params->precision));
 	}
 	if (params->nb < 0 && params->nb != -2147483648)
 	{
@@ -40,11 +37,11 @@ void treat_precision(t_struct *params)
 		params->len++;
 	}
 	ft_precision_d(params);
-	if (!params->precision && params->str[0] == '0' && params->width)
-		ft_putchar_fd(' ', 1);
-	else
+	if (!(!params->precision && params->str[0] == '0'))
+	{
 		ft_putstr_fd(params->str, 1);
-	params->ret += ft_strlen(params->str);
+		params->ret += ft_strlen(params->str);
+	}
 	if (params->width > params->precision && params->minus)
 		ft_width(params, (params->width - params->len));
 	return ;
@@ -83,8 +80,7 @@ void	print_d(va_list ap, t_struct *params)
 {
 	int		nb;
 	char	*str;
-	int		len;
- 
+
 	nb = va_arg(ap, int);
 	params->nb = nb;
 	str = ft_itoa(nb);
@@ -95,10 +91,15 @@ void	print_d(va_list ap, t_struct *params)
 		if (nb != -2147483648)
 			params->ret++;
 	}
-	len = ft_strlen(str);
+	params->len = ft_strlen(str);
+	if (!params->precision && str[0] == '0')
+		params->len = 0;
 	params->str = str;
-	params->number = nb;
-	params->len = len;
+	if (nb < 0 && params->zero && params->minus && params->precision == -1)
+	{
+		ft_putchar_fd('-', 1);
+		params->len++;
+	}
 	print_d_aux(params);
 	free(str);
 }

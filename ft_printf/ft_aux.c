@@ -25,17 +25,19 @@ void	ft_zero(t_struct *params, int len)
 	}
 }
 
-void	ft_precision(t_struct *params)
-{
-	int		i;
-	char 	*str;
-
-	i = 0;
-	str = params->str;
-	while (str && str[i] != '\0' && i < params->precision)
-	{
-		ft_putchar_fd(str[i], 1);
-		params->ret++;
-		i++;
-	}
-}
+/*
+**void	ft_precision(t_struct *params)
+**{
+**	int		i;
+**	char 	*str;
+**
+**	i = 0;
+**	str = params->str;
+**	while (str && str[i] != '\0' && i < params->precision)
+**	{
+**		ft_putchar_fd(str[i], 1);
+**		params->ret++;
+**		i++;
+**	}
+**}
+*/
