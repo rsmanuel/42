@@ -32,5 +32,7 @@ int		parse_str(const char *str, va_list ap, t_struct *params);
 void	ft_width(t_struct *params, int len);
 void	ft_zero(t_struct *params, int len);
 void	ft_precision(t_struct *params);
+void	ft_precision_d(t_struct *params);
+void	treat_precision(t_struct *params);
 
 #endif

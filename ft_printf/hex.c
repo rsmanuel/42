@@ -38,52 +38,6 @@ char *ft_itox(unsigned long nb, t_struct *params)
 	return (str);
 }
 
-void	ft_precision_d(t_struct *params)
-{
-	int	len;
-	int	i;
-
-	len = ft_strlen(params->str);
-	i = len;
-	if (params->precision > len)
-	{
-		while (i < params->precision)
-		{
-			ft_putchar_fd('0', 1);
-			i++;
-			params->len++;
-			params->ret++;
-		}
-	}
-}
-
-void	treat_precision(t_struct *params)
-{
-	if (params->width > params->precision && !params->minus)
-	{
-		if (params->nb < 0 && params->precision >= 0)
-			params->width -= 1;
-		if (params->precision == 0)
-			ft_width(params, (params->width - params->len));
-		else
-			ft_width(params, (params->width - params->precision));
-	}
-	if (params->nb < 0 && params->nb != -2147483648)
-	{
-		ft_putchar_fd('-', 1);
-		params->len++;
-	}
-	ft_precision_d(params);
-	if (!(!params->precision && params->str[0] == '0'))
-	{
-		ft_putstr_fd(params->str, 1);
-		params->ret += ft_strlen(params->str);
-	}
-	if (params->width > params->precision && params->minus)
-		ft_width(params, (params->width - params->len));
-	return ;
-}
-
 void	print_x_aux(t_struct *params)
 {
 	char	*str;
