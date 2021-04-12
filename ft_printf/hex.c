@@ -38,6 +38,25 @@ char *ft_itox(unsigned long nb, t_struct *params)
 	return (str);
 }
 
+void	ft_precision_d(t_struct *params)
+{
+	int	len;
+	int	i;
+
+	len = ft_strlen(params->str);
+	i = len;
+	if (params->precision > len)
+	{
+		while (i < params->precision)
+		{
+			ft_putchar_fd('0', 1);
+			i++;
+			params->len++;
+			params->ret++;
+		}
+	}
+}
+
 void	treat_precision(t_struct *params)
 {
 	if (params->width > params->precision && !params->minus)
