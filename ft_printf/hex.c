@@ -73,11 +73,9 @@ void	print_x(va_list ap, t_struct *params)
 	char *str;
 
 	nb = va_arg(ap, unsigned int);
-	if (!nb)
-		return;
 	str = ft_itox(nb, params);
-	ft_putstr_fd(str, 1);
-	params->ret++;
+	params->str = str;
+	print_x_aux(params);
 	if (nb)
 		free(str);
 }
