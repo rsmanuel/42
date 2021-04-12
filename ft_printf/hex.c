@@ -38,6 +38,62 @@ char *ft_itox(unsigned long nb, t_struct *params)
 	return (str);
 }
 
+void	treat_precision(t_struct *params)
+{
+	if (params->width > params->precision && !params->minus)
+	{
+		if (params->nb < 0 && params->precision >= 0)
+			params->width -= 1;
+		if (params->precision == 0)
+			ft_width(params, (params->width - params->len));
+		else
+			ft_width(params, (params->width - params->precision));
+	}
+	if (params->nb < 0 && params->nb != -2147483648)
+	{
+		ft_putchar_fd('-', 1);
+		params->len++;
+	}
+	ft_precision_d(params);
+	if (!(!params->precision && params->str[0] == '0'))
+	{
+		ft_putstr_fd(params->str, 1);
+		params->ret += ft_strlen(params->str);
+	}
+	if (params->width > params->precision && params->minus)
+		ft_width(params, (params->width - params->len));
+	return ;
+}
+
+void	print_x_aux(t_struct *params)
+{
+	char	*str;
+
+	str = params->str;
+	if (params->precision > -1)
+		treat_precision(params);
+	else
+	{
+		if (!params->minus && params->width && !params->zero)
+			ft_width(params, (params->width - params->len));
+		if (params->zero && params->width && !params->minus)
+		{
+			if (params->nb < 0)
+			{
+				ft_putchar_fd('-', 1);
+				params->len++;
+			}
+			ft_zero(params, (params->width - params->len));
+		}
+		if (params->nb < 0 && !params->zero)
+			ft_putchar_fd('-', 1);
+		ft_putstr_fd(str, 1);
+		params->ret += ft_strlen(str);
+		if (params->minus)
+			ft_width(params, (params->width - params->len));
+	}
+}
+
 void	print_x(va_list ap, t_struct *params)
 {
 	unsigned int nb;
