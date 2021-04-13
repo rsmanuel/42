@@ -6,7 +6,7 @@ void	ft_precision(t_struct *params)
 	int	len;
 	int	i;
 
-	len = params->len;
+	len = ft_strlen(params->str);
 	i = len;
 	if (params->precision > len)
 	{
