@@ -39,10 +39,16 @@ void ft_itox(unsigned long nb, t_struct *params)
 	free(str);
 }
 
+void	print_x_aux(t_struct *params)
+{
+	ft_putstr_fd(params->str, 1);
+}
+
 void	print_x(va_list ap, t_struct *params)
 {
 	unsigned int nb;
-	char *str;
 
 	nb = va_arg(ap, unsigned int);
+	ft_itox(nb, params);
+	print_x_aux(params);
 }
