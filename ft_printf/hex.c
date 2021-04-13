@@ -41,7 +41,19 @@ void ft_itox(unsigned long nb, t_struct *params)
 
 void	print_x_aux(t_struct *params)
 {
-	ft_putstr_fd(params->str, 1);
+	if (params->precision > -1)
+		treat_precision(params);
+	else
+	{
+		if (!params->minus && params->width && !params->zero)
+			ft_width(params, (params->width - params->len));
+		if (params->zero && params->width && !params->minus)
+			ft_zero(params, (params->width - params->len));
+		ft_putstr_fd(params->str, 1);
+		params->ret += ft_strlen(params->str);
+		if (params->minus)
+			ft_width(params, (params->width - params->len));
+	}
 }
 
 void	print_x(va_list ap, t_struct *params)
@@ -50,5 +62,7 @@ void	print_x(va_list ap, t_struct *params)
 
 	nb = va_arg(ap, unsigned int);
 	ft_itox(nb, params);
+	params->len = ft_strlen(params->str);
+	printf("<<%s>>", params->str);
 	print_x_aux(params);
 }

@@ -1,12 +1,12 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-void	ft_precision_d(t_struct *params)
+void	ft_precision(t_struct *params)
 {
 	int	len;
 	int	i;
 
-	len = ft_strlen(params->str);
+	len = params->len;
 	i = len;
 	if (params->precision > len)
 	{
@@ -36,7 +36,7 @@ void	treat_precision(t_struct *params)
 		ft_putchar_fd('-', 1);
 		params->len++;
 	}
-	ft_precision_d(params);
+	ft_precision(params);
 	if (!(!params->precision && params->str[0] == '0'))
 	{
 		ft_putstr_fd(params->str, 1);
