@@ -76,5 +76,6 @@ void	print_x(va_list ap, t_struct *params)
 	str = ft_itox(nb, params);
 	params->str = str;
 	print_x_aux(params);
-	free(str);
+	if (str)
+		free(str);
 }
