@@ -17,7 +17,7 @@ int	ft_printf(const char *fmt, ...)
 	params->ret = 0;
 	while (fmt[i])
 	{
-		if (fmt[i] == '%' && fmt[i + 1] != '%')
+		if (fmt[i] == '%')
 			i += parse_str(&fmt[i + 1], ap, params);
 		else
 		{
