@@ -14,20 +14,21 @@ int	len_itox(unsigned long nb)
 	return (len);
 }
 
-void ft_itox(unsigned long nb, t_struct *params)
+char *ft_itox(unsigned long nb, t_struct *params)
 {
 	int	len;
 	char *base;
 	char *str;
 
 	len = len_itox(nb);
+	printf("<<%lu>>", nb);
 	if (params->conversion == 'X')
 		base = "0123456789ABCDEF";
 	else if (params->conversion == 'x')
 		base = "0123456789abcdef";
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
-		return ;
+		return (NULL);
 	str[len + 1] = '\0';
 	while (len > 0)
 	{
@@ -35,8 +36,7 @@ void ft_itox(unsigned long nb, t_struct *params)
 		nb /= 16;
 		len--;
 	}
-	params->str = str;
-	free(str);
+	return (str);
 }
 
 void	print_x_aux(t_struct *params)
@@ -59,10 +59,12 @@ void	print_x_aux(t_struct *params)
 void	print_x(va_list ap, t_struct *params)
 {
 	unsigned int nb;
+	char *str;
 
 	nb = va_arg(ap, unsigned int);
-	ft_itox(nb, params);
+	str = ft_itox(nb, params);
+	params->str = str;
 	params->len = ft_strlen(params->str);
-	printf("<<%s>>", params->str);
 	print_x_aux(params);
+	free(str);
 }
