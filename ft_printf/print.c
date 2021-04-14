@@ -3,6 +3,7 @@
 
 void	print(va_list ap, t_struct *params)
 {
+	printf("<<%c>>", params->conversion);
 	if (params->conversion == 'c')
 		print_c(ap, params);
 	else if (params->conversion == 's')

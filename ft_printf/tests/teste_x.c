@@ -4,6 +4,6 @@
 
 int main(void)
 {
-	ft_printf("[ %.3x ]", 412);
-	printf("\n[ %.3x ]", 412);
+	printf("%d", ft_printf("[ %% ]", UINT_MAX));
+	printf("\n[ %9.1x ]", UINT_MAX);
 }

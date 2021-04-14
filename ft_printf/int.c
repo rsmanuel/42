@@ -19,10 +19,20 @@ void	ft_precision(t_struct *params)
 		}
 	}
 }
+void	conversion_is_x(t_struct *params)
+{
+	if (params->width > params->precision && !params->minus)
+	{
+		if (params->width > params->precision && params->precision < params->len)
+			ft_width(params, (params->width - params->len));
+		else
+			ft_width(params, (params->width - params->precision));
+	}
+}
 
 void	treat_precision(t_struct *params)
 {
-	if (params->width > params->precision && !params->minus)
+	if (params->width > params->precision && !params->minus && params->conversion != 'x' && params->conversion != 'X')
 	{
 		if (params->nb < 0 && params->precision >= 0)
 			params->width -= 1;
@@ -36,6 +46,8 @@ void	treat_precision(t_struct *params)
 		ft_putchar_fd('-', 1);
 		params->len++;
 	}
+	if (params->conversion != 'd' && params->conversion != 'i')
+		conversion_is_x(params);
 	ft_precision(params);
 	if (!(!params->precision && params->str[0] == '0'))
 	{
