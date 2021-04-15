@@ -7,22 +7,26 @@ NAME = libftprintf.a
 SRCS =  ft_printf.c \
 		char.c \
 		ft_aux.c \
+		ft_aux2.c \
 		int.c \
 		parse.c \
 		print.c \
 		string.c \
 		struct.c \
 		hex.c \
+		uint.c \
 		
 SURPL_O = 	ft_printf.o \
 		char.o \
 		ft_aux.o \
+		ft_aux2.0 \
 		int.o \
 		parse.o \
 		print.o \
 		string.o \
 		struct.o \
 		hex.o \
+		uint.o \
 
 CC = gcc
 

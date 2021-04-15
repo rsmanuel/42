@@ -3,8 +3,8 @@
 
 void	print_s_aux(t_struct *params)
 {
-	char *sub;
-	
+	char	*sub;
+
 	sub = NULL;
 	if (params->precision > -1)
 	{	
@@ -31,7 +31,7 @@ void	print_s_aux(t_struct *params)
 void	print_s(va_list ap, t_struct *params)
 {
 	char	*str;
-	char 	*dup;
+	char	*dup;
 
 	str = va_arg(ap, char *);
 	dup = NULL;
@@ -44,6 +44,5 @@ void	print_s(va_list ap, t_struct *params)
 	params->len = ft_strlen(str);
 	print_s_aux(params);
 	if (dup)
-		free(dup);	
+		free(dup);
 }
-

@@ -1,20 +1,8 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-int	ft_printf(const char *fmt, ...)
+void	ft_printf_aux(int i, const char *fmt, va_list ap, t_struct *params)
 {
-	int			i;
-	va_list		ap;
-	t_struct	*params;
-	int			ret;
-
-	i = 0;
-	va_start(ap, fmt);
-	params = (t_struct *)malloc(sizeof(t_struct));
-	reset_struct(params);
-	if (!params)
-		return (0);
-	params->ret = 0;
 	while (fmt[i])
 	{
 		if (fmt[i] == '%')
@@ -26,8 +14,25 @@ int	ft_printf(const char *fmt, ...)
 		}
 		i++;
 	}
+}
+
+int	ft_printf(const char *fmt, ...)
+{
+	int			i;
+	va_list		ap;
+	t_struct	*params;
+	int			ret;
+
+	i = 0;
+	va_start(ap, fmt);
+	params = (t_struct *)malloc(sizeof(t_struct));
+	if (!params)
+		return (0);
+	reset_struct(params);
+	params->ret = 0;
+	ft_printf_aux(i, fmt, ap, params);
 	ret = params->ret;
 	va_end(ap);
 	free(params);
 	return (ret);
-	}
+}

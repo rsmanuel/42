@@ -19,11 +19,13 @@ void	ft_precision(t_struct *params)
 		}
 	}
 }
-void	conversion_is_x(t_struct *params)
+
+void	conversion_is_x_u(t_struct *params)
 {
 	if (params->width > params->precision && !params->minus)
 	{
-		if (params->width > params->precision && params->precision < params->len)
+		if (params->width > params->precision
+			&& params->precision < params->len)
 			ft_width(params, (params->width - params->len));
 		else
 			ft_width(params, (params->width - params->precision));
@@ -32,7 +34,8 @@ void	conversion_is_x(t_struct *params)
 
 void	treat_precision(t_struct *params)
 {
-	if (params->width > params->precision && !params->minus && params->conversion != 'x' && params->conversion != 'X')
+	if (params->width > params->precision && !params->minus
+		&& params->conversion == 'd' && params->conversion != 'i')
 	{
 		if (params->nb < 0 && params->precision >= 0)
 			params->width -= 1;
@@ -47,7 +50,7 @@ void	treat_precision(t_struct *params)
 		params->len++;
 	}
 	if (params->conversion != 'd' && params->conversion != 'i')
-		conversion_is_x(params);
+		conversion_is_x_u(params);
 	ft_precision(params);
 	if (!(!params->precision && params->str[0] == '0'))
 	{
@@ -56,7 +59,6 @@ void	treat_precision(t_struct *params)
 	}
 	if (params->width > params->precision && params->minus)
 		ft_width(params, (params->width - params->len));
-	return ;
 }
 
 void	print_d_aux(t_struct *params)

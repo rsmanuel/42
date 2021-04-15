@@ -4,6 +4,6 @@
 
 int main(void)
 {
-	printf("%d", ft_printf("[ %% ]", UINT_MAX));
-	printf("\n[ %9.1x ]", UINT_MAX);
+	ft_printf("[ 0*%021.10u*0 ]", -101);
+	printf("\n[ 0*%021.10u*0 ]", -101);
 }

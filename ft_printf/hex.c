@@ -14,11 +14,12 @@ int	len_itox(unsigned long nb)
 	return (len);
 }
 
-char *ft_itox(unsigned long nb, t_struct *params)
+char	*ft_itox(unsigned long nb, t_struct *params)
 {
-	int	len;
-	char *base;
-	char *str;
+	int		len;
+	char	*base;
+	char	*str;
+
 	len = len_itox(nb);
 	if (params->conversion == 'X')
 		base = ft_strdup("0123456789ABCDEF");
@@ -30,7 +31,7 @@ char *ft_itox(unsigned long nb, t_struct *params)
 	str[len] = '\0';
 	while (len > 0)
 	{
-		str[len - 1]  = base[nb % 16];
+		str[len - 1] = base[nb % 16];
 		nb /= 16;
 		len--;
 	}
@@ -57,8 +58,8 @@ void	print_x_aux(t_struct *params)
 
 void	print_x(va_list ap, t_struct *params)
 {
-	unsigned int nb;
-	char *str;
+	unsigned int	nb;
+	char			*str;
 
 	nb = va_arg(ap, unsigned int);
 	str = ft_itox(nb, params);

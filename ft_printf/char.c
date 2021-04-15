@@ -20,4 +20,3 @@ void	print_c(va_list ap, t_struct *params)
 	c = va_arg(ap, int);
 	print_c_aux(params, c);
 }
-

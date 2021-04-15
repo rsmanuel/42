@@ -10,5 +10,4 @@ void	reset_struct(t_struct *params)
 	params->hash = 0;
 	params->width = 0;
 	params->precision = 0;
-	//params->len = 0;
 }
