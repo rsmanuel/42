@@ -3,9 +3,6 @@
 
 void	print_u_aux(t_struct *params)
 {
-	char	*str;
-
-	str = params->str;
 	if (params->precision > -1)
 		treat_precision(params);
 	else
@@ -14,8 +11,8 @@ void	print_u_aux(t_struct *params)
 			ft_width(params, (params->width - params->len));
 		if (params->zero && params->width && !params->minus)
 			ft_zero(params, (params->width - params->len));
-		ft_putstr_fd(str, 1);
-		params->ret += ft_strlen(str);
+		ft_putstr_fd(params->str, 1);
+		params->ret += ft_strlen(params->str);
 		if (params->minus)
 			ft_width(params, (params->width - params->len));
 	}
