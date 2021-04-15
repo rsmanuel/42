@@ -16,13 +16,6 @@ static int	n_len(unsigned int n)
 	return (len);
 }
 
-static int	n_sign(unsigned int n)
-{
-	if (n < 0)
-		n = n * -1;
-	return (n);
-}
-
 static char	*int_min(unsigned int n)
 {
 	if (n == 0)
@@ -45,11 +38,6 @@ char	*ft_itoa_u(unsigned int n)
 	if (strn == NULL)
 		return (0);
 	strn[len] = '\0';
-	if (n < 0)
-	{
-		n = n_sign(n);
-		strn[0] = '-';
-	}
 	while (n != 0)
 	{
 		len--;
