@@ -35,7 +35,7 @@ void	conversion_is_x_u(t_struct *params)
 void	treat_precision(t_struct *params)
 {
 	if (params->width > params->precision && !params->minus
-		&& params->conversion == 'd' && params->conversion != 'i')
+		&& params->conversion == 'd' && params->conversion == 'i')
 	{
 		if (params->nb < 0 && params->precision >= 0)
 			params->width -= 1;
