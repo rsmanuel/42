@@ -4,6 +4,11 @@
 
 int main(void)
 {
-	ft_printf("[ 0*%021.10u*0 ]", -101);
-	printf("\n[ 0*%021.10u*0 ]", -101);
+	char a;
+	char *ptr;
+
+	a = 'a';
+	ptr = &a;
+	ft_printf("[ %p ]", ptr);
+	printf("\n[ %p ]", ptr);
 }

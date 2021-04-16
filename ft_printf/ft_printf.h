@@ -18,7 +18,7 @@ typedef struct s_struct
 	int		precision;
 	int		len;
 	int		nb;
-	void	*ptr;
+	unsigned long	ptr;
 	int		ret;
 }				t_struct;
 

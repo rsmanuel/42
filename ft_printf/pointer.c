@@ -3,9 +3,11 @@
 
 void	print_p(va_list ap, t_struct *params)
 {
-	void	*ptr;
+	unsigned long	ptr;
+	char *str;
 
-	ptr = va_arg(ap, void *);
+	ptr = (unsigned long)va_arg(ap, void*);
 	params->ptr = ptr;
-	ft_putstr_fd("0x", 1);
+	str = ft_itox(params->ptr, params);
+	ft_putstr_fd(str, 1);
 }
