@@ -15,6 +15,7 @@ SRCS =  ft_printf.c \
 		struct.c \
 		hex.c \
 		uint.c \
+		pointer.c \
 		
 SURPL_O = 	ft_printf.o \
 		char.o \
@@ -27,6 +28,7 @@ SURPL_O = 	ft_printf.o \
 		struct.o \
 		hex.o \
 		uint.o \
+		pointer.o \
 
 CC = gcc
 

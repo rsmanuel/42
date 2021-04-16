@@ -7,7 +7,7 @@ int main(void)
 	char a;
 	char *ptr;
 
-	a = 'a';
+	a = '1';
 	ptr = &a;
 	ft_printf("[ %p ]", ptr);
 	printf("\n[ %p ]", ptr);

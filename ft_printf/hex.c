@@ -22,9 +22,9 @@ char	*ft_itox(unsigned long nb, t_struct *params)
 
 	len = len_itox(nb);
 	if (params->conversion == 'X')
-		base = ft_strdup("0123456789ABCDEF");
-	else if (params->conversion == 'x')
-		base = ft_strdup("0123456789abcdef");
+		base = "0123456789ABCDEF";
+	else if (params->conversion == 'x' || params->conversion == 'p')
+		base = "0123456789abcdef";
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
@@ -35,7 +35,6 @@ char	*ft_itox(unsigned long nb, t_struct *params)
 		nb /= 16;
 		len--;
 	}
-	free(base);
 	return (str);
 }
 
