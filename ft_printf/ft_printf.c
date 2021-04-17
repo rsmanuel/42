@@ -8,7 +8,11 @@ void	ft_printf_aux(int i, const char *fmt, va_list ap, t_struct *params)
 		if (fmt[i] == '%' && fmt[i + 1] != '%')
 			i += parse_str(&fmt[i + 1], ap, params);
 		else if (fmt[i] == '%' && fmt[i + 1] == '%')
+		{
 			ft_putchar_fd('%', 1);
+			i++;
+			params->ret++;
+		}
 		else
 		{
 			ft_putchar_fd(fmt[i], 1),

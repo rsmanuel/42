@@ -4,5 +4,6 @@
 
 int main(void)
 {
-    ft_printf("%%");
+    printf("%d", ft_printf("%%%%%%"));
+    printf("%d", printf("%%%%%%"));
 }
