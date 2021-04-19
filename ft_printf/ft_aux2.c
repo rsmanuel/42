@@ -35,7 +35,7 @@ char	*ft_itoa_u(unsigned int n)
 		return (strn);
 	}
 	strn = (char *)malloc(sizeof(char) * (len + 1));
-	if (strn == NULL)
+	if (!strn)
 		return (0);
 	strn[len] = '\0';
 	while (n != 0)

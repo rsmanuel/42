@@ -3,7 +3,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_struct
 {
@@ -18,7 +17,6 @@ typedef struct s_struct
 	int		precision;
 	int		len;
 	int		nb;
-	unsigned long	ptr;
 	int		ret;
 }				t_struct;
 
