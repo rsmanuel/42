@@ -6,7 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 17:08:05 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/24 16:39:41 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/04/19 18:23:10 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *list;
-	t_list *new;
+	t_list	*list;
+	t_list	*new;
 
 	if (!lst)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 18:54:49 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/22 12:02:47 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/04/19 18:22:16 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*int_min(int n)
 	return (0);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*strn;

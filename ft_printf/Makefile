@@ -46,6 +46,8 @@ $(NAME): $(OBJS)
 
 all : $(NAME)
 
+bonus : $(NAME)
+
 clean :
 	$(MAKE) clean -C ./libft
 	rm -rf $(SURPL_O) 

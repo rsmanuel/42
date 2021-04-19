@@ -6,7 +6,7 @@
 /*   By: rmanuel <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 13:33:33 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/23 19:05:39 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/04/19 18:22:42 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *next;
+	t_list	*next;
 
 	while (*lst)
 	{

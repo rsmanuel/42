@@ -6,7 +6,7 @@
 /*   By: rmanuel <rmanuel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 18:34:28 by rmanuel           #+#    #+#             */
-/*   Updated: 2021/02/24 17:11:47 by rmanuel          ###   ########.fr       */
+/*   Updated: 2021/04/19 18:31:41 by rmanuel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_char_in_set(char c, const char *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trim;
 	size_t	start;

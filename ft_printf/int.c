@@ -49,6 +49,12 @@ void	treat_precision(t_struct *params)
 		ft_putchar_fd('-', 1);
 		params->len++;
 	}
+	if (params->nb >= 0 && params->plus)
+	{
+		ft_putchar_fd('+', 1);
+		params->ret++;
+		params->len++;	
+	}
 	if (params->conversion != 'd' && params->conversion != 'i')
 		conversion_is_x_u(params);
 	ft_precision(params);
@@ -72,17 +78,28 @@ void	print_d_aux(t_struct *params)
 	{
 		if (!params->minus && params->width && !params->zero)
 			ft_width(params, (params->width - params->len));
-		if (params->zero && params->width && !params->minus)
+		if ((params->zero && params->width && !params->minus) || (params->zero && params->width && !params->minus && params->plus))
 		{
 			if (params->nb < 0)
 			{
 				ft_putchar_fd('-', 1);
 				params->len++;
 			}
+			if (params->nb >= 0)
+			{
+				ft_putchar_fd('+', 1);
+				params->ret++;
+				params->len++;
+			}
 			ft_zero(params, (params->width - params->len));
 		}
 		if (params->nb < 0 && !params->zero)
 			ft_putchar_fd('-', 1);
+		if (params->nb >= 0 && !params->zero)
+		{
+			ft_putchar_fd('+', 1);
+			params->ret++;
+		}
 		ft_putstr_fd(str, 1);
 		params->ret += ft_strlen(str);
 		if (params->minus)

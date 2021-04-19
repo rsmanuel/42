@@ -35,7 +35,7 @@ int	ft_printf(const char *fmt, ...)
 	if (!params)
 		return (0);
 	reset_struct(params);
-	params->ret = 0,
+	params->ret = 0;
 	params->nb = 0;
 	ft_printf_aux(i, fmt, ap, params);
 	ret = params->ret;
