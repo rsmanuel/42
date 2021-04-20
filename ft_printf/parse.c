@@ -17,6 +17,8 @@ void	parse_flags(const char *str, t_struct *params)
 			params->hash = 1;
 		str++;
 	}
+	if (!params->width)
+		params->zero = 0;
 }
 
 void	parse_precision(const char *str, va_list ap, t_struct *params)
@@ -88,10 +90,10 @@ int	parse_str(const char *str, va_list ap, t_struct *params)
 	len = 0;
 	conversion = NULL;
 	parse_modifiers(str, ap, params);
-	while (ft_strchr("-. 0*#+cspdiuxXnfge123456789", *str))
+	while (ft_strchr("-. 0*#+cspdiuxXnfge123456789%", *str))
 	{
 		len++;
-		conversion = ft_strchr("cspdiuxX", *str);
+		conversion = ft_strchr("cspdiuxX%", *str);
 		if (conversion)
 			break ;
 		str++;

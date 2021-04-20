@@ -3,7 +3,7 @@
 
 void	print(va_list ap, t_struct *params)
 {
-	if (params->conversion == 'c')
+	if (params->conversion == 'c' || params->conversion == '%')
 		print_c(ap, params);
 	else if (params->conversion == 's')
 		print_s(ap, params);
