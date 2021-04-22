@@ -12,10 +12,11 @@ void	print_u_aux(t_struct *params)
 		if (params->zero && params->width && !params->minus)
 			ft_zero(params, (params->width - params->len));
 		ft_putstr_fd(params->str, 1);
-		params->ret += ft_strlen(params->str);
 		if (params->minus)
 			ft_width(params, (params->width - params->len));
 	}
+	if (!(!params->precision && params->str[0] == '0'))
+		params->ret += ft_strlen(params->str);
 }
 
 void	print_u(va_list ap, t_struct *params)

@@ -1,7 +1,3 @@
-LIBFT = ./libft/libft.a
-
-N_TEMP = temp.a
-
 NAME = libftprintf.a
 
 SRCS =  ft_printf.c \
@@ -16,19 +12,7 @@ SRCS =  ft_printf.c \
 		hex.c \
 		uint.c \
 		pointer.c \
-		
-SURPL_O = 	ft_printf.o \
-		char.o \
-		ft_aux.o \
-		ft_aux2.0 \
-		int.o \
-		parse.o \
-		print.o \
-		string.o \
-		struct.o \
-		hex.o \
-		uint.o \
-		pointer.o \
+		ft_bonus.c \
 
 CC = gcc
 
@@ -39,7 +23,7 @@ INCLUDES = -I./includes
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	$(MAKE) bonus -C ./libft
+	make bonus -C ./libft
 	cp libft/libft.a $(NAME)
 	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
 	ar -rcs $(NAME) $(OBJS)
@@ -50,7 +34,7 @@ bonus : $(NAME)
 
 clean :
 	$(MAKE) clean -C ./libft
-	rm -rf $(SURPL_O) 
+	rm -rf *.o
 	rm -rf $(OBJS)
 
 fclean : clean

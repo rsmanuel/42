@@ -35,7 +35,10 @@ void	ft_width(t_struct *params, int len);
 void	ft_zero(t_struct *params, int len);
 void	ft_precision(t_struct *params);
 void	treat_precision(t_struct *params);
+void	conversion_is_x_u(t_struct *params);
 char	*ft_itox(unsigned long nb, t_struct *params);
 char	*ft_itoa_u(unsigned int n);
+void	plus_space(t_struct *params);
+void	print_x_aux(t_struct *params);
 
 #endif

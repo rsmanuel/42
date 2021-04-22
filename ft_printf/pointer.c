@@ -1,22 +1,54 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
+int	len_itox_p(unsigned long long nb)
+{
+	int	len;
+
+	len = 1;
+	while (nb >= 16)
+	{
+		len++;
+		nb = nb / 16;
+	}
+	return (len);
+}
+
+char	*ft_itox_p(unsigned long long nb, t_struct *params)
+{
+	int		len;
+	char	*base;
+	char	*str;
+
+	len = len_itox_p(nb);
+	if (params->conversion == 'X')
+		base = "0123456789ABCDEF";
+	else if (params->conversion == 'x' || params->conversion == 'p')
+		base = "0123456789abcdef";
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	while (len > 0)
+	{
+		str[len - 1] = base[nb % 16];
+		nb /= 16;
+		len--;
+	}
+	return (str);
+}
+
 void	print_p(va_list ap, t_struct *params)
 {
-	unsigned long	ptr;
-	char			*str;
+	unsigned long long	nb;
+	char				*str;
 
-	ptr = (unsigned long)va_arg(ap, void *);
-	str = ft_itox(ptr, params);
-	params->len = ft_strlen(str) + 2;
-	if (!params->minus && params->width && !params->zero)
-		ft_width(params, (params->width - params->len));
-	if (params->zero && params->width && !params->minus)
-		ft_zero(params, (params->width - params->len));
-	ft_putstr_fd("0x", 1);
-	ft_putstr_fd(str, 1);
-	params->ret += (params->len);
-	if (params->minus)
-		ft_width(params, (params->width - params->len));
+	nb = (unsigned long long)va_arg(ap, void *);
+	str = ft_itox_p(nb, params);
+	params->str = str;
+	params->len = ft_strlen(params->str);
+	params->len += 2;
+	params->ret += 2;
+	print_x_aux(params);
 	free(str);
 }

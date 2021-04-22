@@ -46,13 +46,16 @@ void	print_x_aux(t_struct *params)
 	{
 		if (!params->minus && params->width && !params->zero)
 			ft_width(params, (params->width - params->len));
+		if (params->conversion == 'p')
+			ft_putstr_fd("0x", 1);
 		if (params->zero && params->width && !params->minus)
 			ft_zero(params, (params->width - params->len));
 		ft_putstr_fd(params->str, 1);
-		params->ret += ft_strlen(params->str);
 		if (params->minus)
 			ft_width(params, (params->width - params->len));
 	}
+	if (!(!params->precision && params->str[0] == '0'))
+		params->ret += ft_strlen(params->str);
 }
 
 void	print_x(va_list ap, t_struct *params)
@@ -64,6 +67,8 @@ void	print_x(va_list ap, t_struct *params)
 	str = ft_itox(nb, params);
 	params->str = str;
 	params->len = ft_strlen(params->str);
+	if (params->conversion == 'p')
+		params->len += 2;
 	if (!params->precision && str[0] == '0')
 		params->len = 0;
 	print_x_aux(params);
